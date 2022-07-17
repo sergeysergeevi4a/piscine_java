@@ -5,40 +5,65 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/17 14:46:43 by kferterb          #+#    #+#             */
-/*   Updated: 2022/07/17 18:55:42 by kferterb         ###   ########.fr       */
+/*   Created: 2022/07/17 17:26:01 by kferterb          #+#    #+#             */
+/*   Updated: 2022/07/17 18:55:21 by kferterb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 import java.util.Scanner;
 
-public class Program
-{
-
-	public static void main(String[] args) {
+class Program {
+	
+	public static int isSimple(int num) {
 		
-		Scanner scanner = new Scanner(System.in);
-		int num = scanner.nextInt(), i = 2;
-		
-		if (num < 2) {
-			
-			scanner.close();
-			System.err.println("theIllegalArgument");
-			System.exit(-1);
-		}
+		int i = 2;
 		
 		while ((i * i) <= num) {
 			
 			if ((num % i) == 0) {
 				
-				System.out.println("false " + (i - 1));
-				scanner.close();
-				return ;
+				return (0);
 			}
 			i++;
 		}
+		return (1);
+	}
+	
+	public static int numSum(int num) {
 		
-		System.out.println("true " + (i - 1));
+		int res = 0;
+
+		while (num > 0) {
+			
+			res = res + num % 10;
+			num = num / 10;
+		}
+		
+		return(res);
+	}
+	
+	public static void main(String[] args) {
+		
+		Scanner scanner = new Scanner(System.in);
+		int cup_count = 0, num = 0;
+		
+		while (scanner.hasNext()) {
+			
+			num = scanner.nextInt();
+			if (num == 42) {
+				
+				break ;
+			}
+			
+			num = numSum(num);
+			
+			if (isSimple(num) == 1) {
+				
+				cup_count++;
+			}
+		}
+		
+		System.out.println("Count of coffee-request - " + cup_count);
 		
 		scanner.close();
 	}
