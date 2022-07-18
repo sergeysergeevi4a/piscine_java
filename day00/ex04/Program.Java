@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Program.java                                       :+:      :+:    :+:   */
+/*   Program.Java                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 13:22:57 by kferterb          #+#    #+#             */
-/*   Updated: 2022/07/18 18:31:06 by kferterb         ###   ########.fr       */
+/*   Updated: 2022/07/18 18:35:17 by kferterb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,6 @@ public class Program {
 					massFinalSymb[i + 1] = swapSymb;
 					i = -1;
 			}
-		}
-		
-		for (char print: massFinalSymb) {
-			System.out.println(print);
-		}
-
-		for (short print: massCountSymb) {
-			System.out.println(print);
 		}
 		
 		scanner.close();
