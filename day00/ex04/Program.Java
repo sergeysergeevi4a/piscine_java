@@ -5,9 +5,16 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/18 13:09:10 by kferterb          #+#    #+#             */
-/*   Updated: 2022/07/18 13:10:02 by kferterb         ###   ########.fr       */
+/*   Created: 2022/07/18 13:22:57 by kferterb          #+#    #+#             */
+/*   Updated: 2022/07/18 13:23:45 by kferterb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-class Program
+import java.util.Scanner;
+
+public class Program {
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		scanner.close();
+	}
+}
