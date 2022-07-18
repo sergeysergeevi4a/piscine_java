@@ -6,7 +6,7 @@
 /*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 19:00:43 by kferterb          #+#    #+#             */
-/*   Updated: 2022/07/18 12:58:07 by kferterb         ###   ########.fr       */
+/*   Updated: 2022/07/18 19:06:40 by kferterb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,9 @@ class Program {
 		}
 		
 		for (int i = 1; nums > 0; i++) {
-			System.out.print("Week " + i + " ");
+			System.out.print("Week ");
+			System.out.print(i);
+			System.out.print(" ");
 			print = nums % 10;
 			for (int j = 0; j < print; j++) {
 				System.out.print("=");
