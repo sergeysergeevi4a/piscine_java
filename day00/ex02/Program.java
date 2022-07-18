@@ -6,7 +6,7 @@
 /*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 17:26:01 by kferterb          #+#    #+#             */
-/*   Updated: 2022/07/18 12:56:58 by kferterb         ###   ########.fr       */
+/*   Updated: 2022/07/18 16:43:43 by kferterb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,10 @@ class Program {
 				break ;
 			}
 			num = numSum(num);
+			if (num < 2) {
+				System.out.println("Illegal argument");
+				continue ;
+			}
 			if (isSimple(num) == 1) {
 				cup_count++;
 			}
