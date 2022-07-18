@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Program.Java                                       :+:      :+:    :+:   */
+/*   Program.java                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 13:22:57 by kferterb          #+#    #+#             */
-/*   Updated: 2022/07/18 18:44:49 by kferterb         ###   ########.fr       */
+/*   Updated: 2022/07/18 20:31:22 by kferterb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,20 @@ import java.util.Scanner;
 
 public class Program {
 	
+	public static final int MAX_SIZE = 10;
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		
 		String s = scanner.nextLine();
 		
-		char massSymb[], massFinalSymb[] = new char[s.length()], swapSymb;
+		char massSymb[], massFinalSymb[] = new char[s.length() + 9], swapSymb;
 
-		short massCountSymb[] = new short[s.length()], swapNum;
+		int massCountSymb[] = new int[s.length() + 9], swapNum, num;
 
 		massSymb = s.toCharArray();
 
+		scanner.close();
+		
 		for (int i = 0; i < massSymb.length; i++) {
 			for (int j = 0; j < massFinalSymb.length; j++) {
 				if (massFinalSymb[j] == massSymb[i]) {
@@ -57,14 +60,36 @@ public class Program {
 			}
 		}
 		
-		for (char print: massFinalSymb) {
-			System.out.println(print);
-		}
-
-		for (short print: massCountSymb) {
-			System.out.println(print);
+		if (s.length() == 0) {
+			return ;
 		}
 		
-		scanner.close();
-	}
+		num = massCountSymb[0];
+		for(int i = 0; i < MAX_SIZE; i++) {
+			if(massCountSymb[i] * MAX_SIZE / num == MAX_SIZE)
+				System.out.print(massCountSymb[i] + "    ");
+		}
+		System.out.println();
+
+		for (int i = MAX_SIZE; i > 0; i--) {
+			for (int j = 0; j < MAX_SIZE; j++) {
+				if (massCountSymb[j] * MAX_SIZE / num >= i) {
+					System.out.print("#    ");
+				}
+				if (massCountSymb[j] * MAX_SIZE / num == i - 1) {
+					if (massCountSymb[j] != 0) {
+						System.out.print(massCountSymb[j] + "    ");
+					}
+				}
+			}
+			System.out.println();
+		}
+		
+		for (int i = 0; i < MAX_SIZE; i++) {
+			if (massFinalSymb[i] != 0) {
+				System.out.print(massFinalSymb[i] + "    ");
+			}
+		}
+		System.out.println();
+	}		
 }
