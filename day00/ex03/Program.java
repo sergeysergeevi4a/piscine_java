@@ -6,13 +6,19 @@
 /*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 19:00:43 by kferterb          #+#    #+#             */
-/*   Updated: 2022/07/18 11:04:50 by kferterb         ###   ########.fr       */
+/*   Updated: 2022/07/18 12:58:07 by kferterb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 import java.util.Scanner;
 
 class Program {
+	
+	private static final int MAX_NUMBERS_COUNT = 18;
+
+	private static final int NUMBERS_OF_WEEK = 5;
+	
+	public static final String EXIT = "42";
 	
 	public static void errorExit(Scanner scanner) {	
 		System.out.println("IllegalArgument");
@@ -26,10 +32,12 @@ class Program {
 		String week;
 		
 		int day = 0, grade = 0, minGrade = 0;
+
+		long nums = 0, print = 0, buffer = 1;
 		
-		for (int i = 1; i <= 18; i++) {
+		for (int i = 1; i <= MAX_NUMBERS_COUNT; i++) {
 			week = scanner.next();
-			if (week.equals("42")) {
+			if (week.equals(EXIT)) {
 				break ;
 			}
 			
@@ -42,18 +50,32 @@ class Program {
 				errorExit(scanner);
 			}
 
-			for (int j = 0; j < 5; j++) {
+			for (int j = 0; j < NUMBERS_OF_WEEK; j++) {
 				grade = scanner.nextInt();
+				if (grade < 1 || grade > 9) {
+					errorExit(scanner);
+				}
 				if (j == 0) {
 					minGrade = grade;
 				} else if (grade < minGrade) {
 					minGrade = grade;
 				}
 			}
-
-			System.out.println(minGrade);
-		
-			scanner.close();
+			
+			nums = nums + minGrade * buffer;
+			buffer = buffer * 10;
 		}
+		
+		for (int i = 1; nums > 0; i++) {
+			System.out.print("Week " + i + " ");
+			print = nums % 10;
+			for (int j = 0; j < print; j++) {
+				System.out.print("=");
+			}
+			System.out.println(">");
+			nums = nums / 10;
+		}
+
+		scanner.close();
 	}
 }

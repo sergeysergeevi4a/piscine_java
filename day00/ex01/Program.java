@@ -6,23 +6,24 @@
 /*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 14:46:43 by kferterb          #+#    #+#             */
-/*   Updated: 2022/07/18 11:08:17 by kferterb         ###   ########.fr       */
+/*   Updated: 2022/07/18 12:55:42 by kferterb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 import java.util.Scanner;
 
-public class Program
-{
+public class Program {
 
+	private static final int NEGATIVE_NUMBERS = 2;
+	
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		
 		int num = scanner.nextInt(), i = 2;
 		
-		if (num < 2) {
+		if (num < NEGATIVE_NUMBERS) {
 			scanner.close();
-			System.err.println("theIllegalArgument");
+			System.err.println("IllegalArgument");
 			System.exit(-1);
 		}
 		

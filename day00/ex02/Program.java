@@ -6,13 +6,15 @@
 /*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 17:26:01 by kferterb          #+#    #+#             */
-/*   Updated: 2022/07/18 11:08:30 by kferterb         ###   ########.fr       */
+/*   Updated: 2022/07/18 12:56:58 by kferterb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 import java.util.Scanner;
 
 class Program {
+	
+	public static final int EXIT = 42;
 	
 	public static int isSimple(int num) {
 		int i = 2;
@@ -43,7 +45,7 @@ class Program {
 		
 		while (scanner.hasNext()) {
 			num = scanner.nextInt();
-			if (num == 42) {
+			if (num == EXIT) {
 				break ;
 			}
 			num = numSum(num);
