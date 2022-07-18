@@ -6,7 +6,7 @@
 /*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 17:26:01 by kferterb          #+#    #+#             */
-/*   Updated: 2022/07/17 18:55:21 by kferterb         ###   ########.fr       */
+/*   Updated: 2022/07/18 10:55:30 by kferterb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,7 @@ class Program {
 		int i = 2;
 		
 		while ((i * i) <= num) {
-			
 			if ((num % i) == 0) {
-				
 				return (0);
 			}
 			i++;
@@ -34,31 +32,25 @@ class Program {
 		int res = 0;
 
 		while (num > 0) {
-			
 			res = res + num % 10;
 			num = num / 10;
 		}
-		
 		return(res);
 	}
 	
 	public static void main(String[] args) {
 		
 		Scanner scanner = new Scanner(System.in);
+		
 		int cup_count = 0, num = 0;
 		
 		while (scanner.hasNext()) {
-			
 			num = scanner.nextInt();
 			if (num == 42) {
-				
 				break ;
 			}
-			
 			num = numSum(num);
-			
 			if (isSimple(num) == 1) {
-				
 				cup_count++;
 			}
 		}
