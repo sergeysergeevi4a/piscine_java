@@ -6,7 +6,7 @@
 /*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 20:28:46 by kferterb          #+#    #+#             */
-/*   Updated: 2022/07/19 20:28:47 by kferterb         ###   ########.fr       */
+/*   Updated: 2022/07/19 20:39:06 by kferterb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 public class UserIdsGenerator {
 
     private Integer id = 0;
+    
     private static UserIdsGenerator userIdsGenerator;
 
     public static UserIdsGenerator getInstance() {

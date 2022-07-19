@@ -6,7 +6,7 @@
 /*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 13:25:09 by kferterb          #+#    #+#             */
-/*   Updated: 2022/07/19 17:15:51 by kferterb         ###   ########.fr       */
+/*   Updated: 2022/07/19 20:39:48 by kferterb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@ public class Program {
 	
 	public static void main(String[] args) {
 	User user1 = new User(1, "John", -10000);
+
         User user2 = new User(2, "John", 10000);
+        
         User user3 = new User(3, "Mike", 10000);
 
         System.out.printf("User1 id - %d, name - %s, balance - %d\n",

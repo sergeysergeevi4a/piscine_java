@@ -6,7 +6,7 @@
 /*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 20:28:54 by kferterb          #+#    #+#             */
-/*   Updated: 2022/07/19 20:28:55 by kferterb         ###   ########.fr       */
+/*   Updated: 2022/07/19 20:39:17 by kferterb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ public class UsersArrayList implements UsersList {
     public static final String USER_NOT_FOUND = "User not found!";
 
     private Integer size = 10;
+
     private Integer index = 0;
+    
     private User[] users = new User[size];
 
     @Override

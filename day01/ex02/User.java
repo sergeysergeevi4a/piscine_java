@@ -6,7 +6,7 @@
 /*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 20:28:44 by kferterb          #+#    #+#             */
-/*   Updated: 2022/07/19 20:28:45 by kferterb         ###   ########.fr       */
+/*   Updated: 2022/07/19 20:39:01 by kferterb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,14 @@
 public class User {
 
     private final Integer identifier;
+    
     private String name;
+    
     private Integer balance;
 
     public User(String name, Integer balance) {
         this.identifier = UserIdsGenerator.getInstance().generateId();
+        
         this.name = name;
 
         if (balance < 0) {
