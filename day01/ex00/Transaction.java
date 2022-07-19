@@ -6,7 +6,7 @@
 /*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 13:25:06 by kferterb          #+#    #+#             */
-/*   Updated: 2022/07/19 16:02:26 by kferterb         ###   ########.fr       */
+/*   Updated: 2022/07/19 16:19:09 by kferterb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,38 @@ public class Transaction {
 		this.sender = sender;
 		this.category = category;
 		setAmount(amount);
+	}
+
+	public UUID getIdentifier() {
+		return identifier;
+	}
+
+	public User getRecipient() {
+		return recipient;
+	}
+
+	public void setRecipient(User recipient) {
+		this.recipient = recipient;
+	}
+
+	public User getSender() {
+		return sender;
+	}
+
+	public void setSender(User sender) {
+		this.sender = sender;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory (Category category) {
+		this.category = category;
+	}
+
+	public Integer getAmount() {
+		return amount;
 	}
 
 	public void setAmount(Integer amount) {
