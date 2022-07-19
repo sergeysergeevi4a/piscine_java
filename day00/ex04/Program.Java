@@ -6,7 +6,7 @@
 /*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 13:22:57 by kferterb          #+#    #+#             */
-/*   Updated: 2022/07/19 16:49:44 by kferterb         ###   ########.fr       */
+/*   Updated: 2022/07/19 19:30:17 by kferterb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@ import java.util.Scanner;
 public class Program {
 	
 	public static final int MAX_SIZE = 10;
+	
 	public static final int MAX_COUNT_SYMBOL = 999;
 	
 	public static void main(String[] args) {
