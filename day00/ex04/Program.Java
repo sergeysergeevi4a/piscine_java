@@ -6,7 +6,7 @@
 /*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 13:22:57 by kferterb          #+#    #+#             */
-/*   Updated: 2022/07/18 20:31:22 by kferterb         ###   ########.fr       */
+/*   Updated: 2022/07/19 10:12:25 by kferterb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ public class Program {
 		
 		String s = scanner.nextLine();
 		
-		char massSymb[], massFinalSymb[] = new char[s.length() + 9], swapSymb;
+		char massSymb[], massFinalSymb[] = new char[s.length() + MAX_SIZE], swapSymb;
 
-		int massCountSymb[] = new int[s.length() + 9], swapNum, num;
+		int massCountSymb[] = new int[s.length() + MAX_SIZE], swapNum, num;
 
 		massSymb = s.toCharArray();
 
