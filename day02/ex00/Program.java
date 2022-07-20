@@ -6,7 +6,7 @@
 /*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 13:18:59 by kferterb          #+#    #+#             */
-/*   Updated: 2022/07/20 16:48:36 by kferterb         ###   ########.fr       */
+/*   Updated: 2022/07/20 16:51:50 by kferterb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,9 @@ class Program {
 	public static final char[] HEX_CHAR_ARRAY = "0123456789ABCDEF".toCharArray();
 
 	public static void main(String[] args) {
-			Map<String, String> signatures = new HashMap<>();
-			try (Scanner scanner = new Scanner(new FileInputStream("signatures.txt"))) {
+		Map<String, String> signatures = new HashMap<>();
+		
+		try (Scanner scanner = new Scanner(new FileInputStream("signatures.txt"))) {
 			while (scanner.hasNextLine()) {
 				String[] strings = scanner.nextLine().split(",");
 				signatures.put(strings[0], strings[1].replaceAll("\\s+", ""));
