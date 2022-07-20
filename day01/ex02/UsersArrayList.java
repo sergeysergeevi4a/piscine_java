@@ -6,7 +6,7 @@
 /*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 20:28:54 by kferterb          #+#    #+#             */
-/*   Updated: 2022/07/19 20:39:17 by kferterb         ###   ########.fr       */
+/*   Updated: 2022/07/20 17:36:25 by kferterb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ public class UsersArrayList implements UsersList {
     @Override
     public void addUser(User user) {
         if (index == size - 1) {
-            Integer newSize = size * 2;
+            Integer newSize = size + size / 2;
             User[] newUsers = new User[newSize];
             copyArray(users, newUsers);
             users = newUsers;
