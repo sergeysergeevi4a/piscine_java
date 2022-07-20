@@ -6,7 +6,7 @@
 /*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 20:04:16 by kferterb          #+#    #+#             */
-/*   Updated: 2022/07/20 20:08:22 by kferterb         ###   ########.fr       */
+/*   Updated: 2022/07/20 20:43:44 by kferterb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,61 +19,7 @@ import java.util.Scanner;
 
 public class Program {
 
-    public static final String KB = " KB";
-    public static final String KEY = "--current-folder=";
-    public static final String AVAILABLE = "Available commands: ls, cd, mv";
     public static final Integer DIVIDER = 1000;
-
-    public static void main(String[] args) {
-        if (args.length != 1) {
-            System.err.println("Error: bad ARGS");
-            return;
-        }
-
-        if (!args[0].startsWith(KEY)) {
-            System.err.println("Error: bad ARGS");
-            return;
-        }
-
-        String path = args[0].replaceFirst(KEY, "");
-        if (path.isEmpty()) {
-            System.err.println("Error: bad path");
-            return;
-        }
-
-        File current = new File(path);
-        if (!Files.isDirectory(Paths.get(String.valueOf(current)))) {
-            System.err.println("Error: bad path");
-            return;
-        }
-
-        System.out.println(current);
-
-        try (Scanner scanner = new Scanner(System.in)) {
-            String string;
-
-            while (true) {
-                string = scanner.nextLine().trim();
-
-                if (string.isEmpty()) {
-                    continue;
-                }
-
-                if (string.equals("exit")) {
-                    break;
-                } else if (string.equals("ls")) {
-                    showContent(current);
-                } else if (string.startsWith("cd")) {
-                    current = executeCd(current, string);
-                    System.out.println(current);
-                } else if (string.startsWith("mv")) {
-                    executeMv(current, string);
-                } else {
-                    System.out.println(AVAILABLE);
-                }
-            }
-        }
-    }
 
     private static void executeMv(File current, String string) {
         String[] strings = string.split("\\s+");
@@ -162,9 +108,9 @@ public class Program {
             for (File file : files) {
                 if (!file.isHidden()) {
                     if (file.isDirectory()) {
-                        System.out.println(file.getName() + " " + folderSize(file) / DIVIDER + KB);
+                        System.out.println(file.getName() + " " + folderSize(file) / DIVIDER + " KB");
                     } else {
-                        System.out.println(file.getName() + " " + file.length() / DIVIDER + KB);
+                        System.out.println(file.getName() + " " + file.length() / DIVIDER + " KB");
                     }
                 }
             }
@@ -186,5 +132,56 @@ public class Program {
         }
 
         return length;
+    }
+
+    public static void main(String[] args) {
+        if (args.length != 1) {
+            System.err.println("Error: bad ARGS");
+            return;
+        }
+
+        if (!args[0].startsWith("--current-folder=")) {
+            System.err.println("Error: bad ARGS");
+            return;
+        }
+
+        String path = args[0].replaceFirst("--current-folder=", "");
+        if (path.isEmpty()) {
+            System.err.println("Error: bad path");
+            return;
+        }
+
+        File current = new File(path);
+        if (!Files.isDirectory(Paths.get(String.valueOf(current)))) {
+            System.err.println("Error: bad path");
+            return;
+        }
+
+        System.out.println(current);
+
+        try (Scanner scanner = new Scanner(System.in)) {
+            String string;
+
+            while (true) {
+                string = scanner.nextLine().trim();
+
+                if (string.isEmpty()) {
+                    continue;
+                }
+
+                if (string.equals("exit")) {
+                    break;
+                } else if (string.equals("ls")) {
+                    showContent(current);
+                } else if (string.startsWith("cd")) {
+                    current = executeCd(current, string);
+                    System.out.println(current);
+                } else if (string.startsWith("mv")) {
+                    executeMv(current, string);
+                } else {
+                    System.out.println("Available commands: ls, cd, mv");
+                }
+            }
+        }
     }
 }
