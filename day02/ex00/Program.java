@@ -6,7 +6,7 @@
 /*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 13:18:59 by kferterb          #+#    #+#             */
-/*   Updated: 2022/07/20 16:19:36 by kferterb         ###   ########.fr       */
+/*   Updated: 2022/07/20 16:45:07 by kferterb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@ class Program {
 	public static final String EXIT = "42";
 	
 	public static final Integer SING_SIZE = 8;
+
+	public static final char[] HEX_CHAR_ARRAY = "0123456789ABCDEF".toCharArray();
+
 	public static void main(String[] args) {
 			Map<String, String> signatures = new HashMap<>();
 			try (Scanner scanner = new Scanner(new FileInputStream("signatures.txt"))) {
@@ -57,7 +60,24 @@ class Program {
 							return ;
 						}
 						
+						char[] hexChars = new char[bytes.length * 2];
+
+						for (int j = 0; j < bytes.length; j++) {
+							int v = bytes[j] & 0xFF;
+							hexChars[j * 2] = HEX_CHAR_ARRAY[v >>> 4];
+							hexChars[j * 2 + 1] = HEX_CHAR_ARRAY[v & 0x0F];
+						}
 						
+						String signature = new String(hexChars);
+						
+						for (Map.Entry<String, String> entry : signatures.entrySet()) {
+							if (signature.contains(entry.getValue())) {
+								fileOutputStream.write(entry.getKey().getBytes());
+								fileOutputStream.write('\n');
+								System.out.println("PROCESSED");
+								return;
+							}
+						}
 					}
 				}
 			} 
