@@ -6,7 +6,7 @@
 /*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 17:09:46 by kferterb          #+#    #+#             */
-/*   Updated: 2022/07/19 17:28:13 by kferterb         ###   ########.fr       */
+/*   Updated: 2022/07/20 10:54:25 by kferterb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ public class Program {
         User user2 = new User("John", 10000);
 		
         User user3 = new User("Mike", 10000);
+
 
         
 		System.out.println(user1.getIdentifier());
