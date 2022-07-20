@@ -6,7 +6,7 @@
 /*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 13:18:59 by kferterb          #+#    #+#             */
-/*   Updated: 2022/07/20 16:45:07 by kferterb         ###   ########.fr       */
+/*   Updated: 2022/07/20 16:48:10 by kferterb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ class Program {
 			} 
 		} catch (FileNotFoundException e) {
 			System.err.println("Error: file not found");
+			
 		} catch (IOException e) {
 			System.err.println("error");
 		}
