@@ -6,7 +6,7 @@
 /*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 20:04:16 by kferterb          #+#    #+#             */
-/*   Updated: 2022/07/20 20:43:44 by kferterb         ###   ########.fr       */
+/*   Updated: 2022/07/21 09:08:15 by kferterb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ public class Program {
     public static final Integer DIVIDER = 1000;
 
     private static void executeMv(File current, String string) {
-        String[] strings = string.split("\\s+");
+        String[] strings = string.split(" ");
 
         if (strings.length != 3) {
             System.err.println("Error: bad ARGS");
@@ -58,7 +58,7 @@ public class Program {
     }
 
     private static File executeCd(File current, String string) {
-        String[] strings = string.split("\\s+");
+        String[] strings = string.split(" ");
 
         if (strings.length != 2) {
             System.err.println("Error: bad ARGS");

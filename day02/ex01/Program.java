@@ -6,7 +6,7 @@
 /*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 17:37:51 by kferterb          #+#    #+#             */
-/*   Updated: 2022/07/20 19:34:05 by kferterb         ###   ########.fr       */
+/*   Updated: 2022/07/21 08:39:09 by kferterb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,8 +141,8 @@ public class Program {
             return;
         }
 
-		ArrayList<String> fileArray1 = new ArrayList<>(Arrays.asList(file1.split("\\s+")));
-        ArrayList<String> fileArray2 = new ArrayList<>(Arrays.asList(file2.split("\\s+")));
+		ArrayList<String> fileArray1 = new ArrayList<>(Arrays.asList(file1.split(" ")));
+        ArrayList<String> fileArray2 = new ArrayList<>(Arrays.asList(file2.split(" ")));
 
         Map<String, Integer> map1 = new HashMap<>();
         Map<String, Integer> map2 = new HashMap<>();

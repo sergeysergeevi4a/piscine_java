@@ -6,7 +6,7 @@
 /*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 13:18:59 by kferterb          #+#    #+#             */
-/*   Updated: 2022/07/20 16:51:50 by kferterb         ###   ########.fr       */
+/*   Updated: 2022/07/21 08:54:34 by kferterb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ class Program {
 		try (Scanner scanner = new Scanner(new FileInputStream("signatures.txt"))) {
 			while (scanner.hasNextLine()) {
 				String[] strings = scanner.nextLine().split(",");
-				signatures.put(strings[0], strings[1].replaceAll("\\s+", ""));
+				signatures.put(strings[0], strings[1].replaceAll(" ", ""));
 			}
 		} catch (FileNotFoundException e) {
 			System.err.println("Error: file not found");
