@@ -6,12 +6,12 @@
 /*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 10:18:48 by kferterb          #+#    #+#             */
-/*   Updated: 2022/07/21 10:36:00 by kferterb         ###   ########.fr       */
+/*   Updated: 2022/07/21 10:39:27 by kferterb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 class Main {
 	public static void main(String[] args) {
-		
+		S
 	}
 }
