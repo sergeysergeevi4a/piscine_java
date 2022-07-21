@@ -6,7 +6,7 @@
 /*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 13:30:25 by kferterb          #+#    #+#             */
-/*   Updated: 2022/07/21 14:08:32 by kferterb         ###   ########.fr       */
+/*   Updated: 2022/07/21 16:00:26 by kferterb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,36 @@ private static int sumOfList(List<Integer> list) {
 		
 		System.out.println("Sum: " + sumOfList(lists));
 
+		int range = arraySize / (threadsCount - 1);
 		
+		List<Thread> listOfThreads = new ArrayList<>(threadsCount);
+
+		int beginIndex = 0;
+		int lastIndex = 0;
+
+		for (int i = 0; i < threadsCount - 1; i++) {
+			beginIndex = i * range;
+			lastIndex = (i + 1) * range;
+			listOfThreads.add(new initThreads(listOfThreads.subList(beginIndex, lastIndex), beginIndex, lastIndex - 1));
+		}
+		
+		beginIndex = (threadsCount - 1) * range;
+		lastIndex = arraySize;
+
+		listOfThreads.add(new initThreads(listOfThreads.subList(beginIndex, lastIndex), beginIndex, lastIndex - 1));
+
+		for (Thread thread : listOfThreads) {
+			thread.start();
+		}
+
+		for (Thread thread : listOfThreads) {
+			try {
+				thread.join();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+
+			System.out.println("Sum by threads: " + initThreads.getSumOfThreads());
+		}
 	}
 }
