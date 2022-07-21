@@ -6,7 +6,7 @@
 /*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 10:18:48 by kferterb          #+#    #+#             */
-/*   Updated: 2022/07/21 11:06:18 by kferterb         ###   ########.fr       */
+/*   Updated: 2022/07/21 11:27:20 by kferterb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ class Program {
 
 		int count = Integer.parseInt(args[0].substring(8));
 
-		Egg egg = new Egg(count);
-		Hen hen = new Hen(count);
+		Thread egg = new Egg(count);
+		Thread hen = new Hen(count);
 
-		hen.start();
 		egg.start();
+		hen.start();
 
 		try {
 			hen.join();

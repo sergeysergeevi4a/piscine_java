@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Program.java                                       :+:      :+:    :+:   */
+/*   Hen.java                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/21 11:09:05 by kferterb          #+#    #+#             */
-/*   Updated: 2022/07/21 11:27:40 by kferterb         ###   ########.fr       */
+/*   Created: 2022/07/21 11:17:23 by kferterb          #+#    #+#             */
+/*   Updated: 2022/07/21 11:34:02 by kferterb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-class Program {
+public class Hen extends Thread {
+	
+	private final int count;
+	
+	public Hen(int count) {
+		this.count = count;
+	}
 
-	public static void main(String[] args) {
-		int count = 0;
-
-		if (args.length != 1 || !args[0].startsWith("--count=")) {
-			System.out.println("Wrong number of arguments");
-			System.exit(-1);
+	@Override
+	public void run() {
+		for (int i = 0; i < this.count; i++) {
+			System.out.println("HEN");
 		}
-
-		Thread egg = new Egg(count);
-		Thread hen = new Hen(count);
-
-		egg.start();
-		hen.start();
 	}
 }
