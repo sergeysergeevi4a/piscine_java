@@ -6,7 +6,7 @@
 /*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 10:26:21 by kferterb          #+#    #+#             */
-/*   Updated: 2022/07/21 11:01:40 by kferterb         ###   ########.fr       */
+/*   Updated: 2022/07/21 11:07:10 by kferterb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@ public class Hen extends Thread {
 	int count;
 
 	public Hen (int count) {
-		
 		this.count = count;
 	}
 
