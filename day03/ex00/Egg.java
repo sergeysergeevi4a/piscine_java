@@ -6,13 +6,13 @@
 /*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 10:25:56 by kferterb          #+#    #+#             */
-/*   Updated: 2022/07/21 11:07:12 by kferterb         ###   ########.fr       */
+/*   Updated: 2022/07/21 11:10:23 by kferterb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 public class Egg extends Thread {
 	
-	int count;
+	private final int count;
 	
 	public Egg(int count) {
 		this.count = count;
