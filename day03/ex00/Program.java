@@ -6,11 +6,12 @@
 /*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 10:18:48 by kferterb          #+#    #+#             */
-/*   Updated: 2022/07/21 11:04:36 by kferterb         ###   ########.fr       */
+/*   Updated: 2022/07/21 11:06:18 by kferterb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 class Program {
+	
 	public static void main(String[] args) {
 		
 		if (args.length != 1 || !args[0].startsWith("--count=")) {
