@@ -6,7 +6,7 @@
 /*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 10:18:48 by kferterb          #+#    #+#             */
-/*   Updated: 2022/07/21 11:27:20 by kferterb         ###   ########.fr       */
+/*   Updated: 2022/07/21 11:43:27 by kferterb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ class Program {
 		}
 
 		int count = Integer.parseInt(args[0].substring(8));
-
+		
 		Thread egg = new Egg(count);
 		Thread hen = new Hen(count);
 
