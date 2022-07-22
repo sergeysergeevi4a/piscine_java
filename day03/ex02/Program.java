@@ -6,7 +6,7 @@
 /*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 13:30:25 by kferterb          #+#    #+#             */
-/*   Updated: 2022/07/21 18:28:55 by kferterb         ###   ########.fr       */
+/*   Updated: 2022/07/22 18:37:41 by kferterb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ private static int sumOfList(List<Integer> list) {
 			listOfThreads.add(new InitThreads(lists.subList(beginIndex, lastIndex), beginIndex, lastIndex - 1));
 		}
 		
-		beginIndex = arraySize - (threadsCount - 1) * range;
+		beginIndex = (threadsCount - 1) * range;
 		lastIndex = arraySize;
 
 		listOfThreads.add(new InitThreads(lists.subList(beginIndex, lastIndex), beginIndex, lastIndex - 1));
