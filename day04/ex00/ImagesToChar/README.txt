@@ -1,7 +1,7 @@
 #0. Delete old directory:
 rm -rf target
 
-#1. Create directory:
+#1. Create new directory:
 mkdir target
 
 #2. Compile files to the 'target' directory:
