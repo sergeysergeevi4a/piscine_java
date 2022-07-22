@@ -6,7 +6,7 @@
 /*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 18:29:16 by kferterb          #+#    #+#             */
-/*   Updated: 2022/07/22 18:46:54 by kferterb         ###   ########.fr       */
+/*   Updated: 2022/07/22 20:19:21 by kferterb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,7 @@ public class Program {
         
         try {
             image = new Logic(path);
-            JCommander.newBuilder()
-                    .addObject(image)
-                    .build()
-                    .parse(args);
+            JCommander.newBuilder().addObject(image).build().parse(args);
         } catch (Exception e) {
             System.out.println("Bad arguments");
             return;
