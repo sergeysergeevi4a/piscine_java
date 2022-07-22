@@ -6,11 +6,11 @@
 /*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 09:58:22 by kferterb          #+#    #+#             */
-/*   Updated: 2022/07/22 09:58:23 by kferterb         ###   ########.fr       */
+/*   Updated: 2022/07/22 13:30:00 by kferterb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-package java.edu.school21.printer.logic;
+package edu.school21.printer.logic;
 
 public class Logic {
 	
