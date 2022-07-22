@@ -6,7 +6,7 @@
 /*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 18:29:16 by kferterb          #+#    #+#             */
-/*   Updated: 2022/07/22 18:41:33 by kferterb         ###   ########.fr       */
+/*   Updated: 2022/07/22 18:46:54 by kferterb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,9 @@ import edu.school21.printer.logic.Logic;
 public class Program {
     public static void main(String[] args) {
         URL path = Program.class.getResource("/resources/image.bmp");
+
         Logic image;
+        
         try {
             image = new Logic(path);
             JCommander.newBuilder()
