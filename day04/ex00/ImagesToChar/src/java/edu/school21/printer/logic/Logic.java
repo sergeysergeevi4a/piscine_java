@@ -6,7 +6,7 @@
 /*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 09:58:22 by kferterb          #+#    #+#             */
-/*   Updated: 2022/07/22 15:50:59 by kferterb         ###   ########.fr       */
+/*   Updated: 2022/07/22 18:49:02 by kferterb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.FileInputStream;
 import java.io.IOException;
+
 import javax.imageio.ImageIO;
 
 public class Logic {

@@ -6,7 +6,7 @@
 /*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 09:58:22 by kferterb          #+#    #+#             */
-/*   Updated: 2022/07/22 17:26:16 by kferterb         ###   ########.fr       */
+/*   Updated: 2022/07/22 18:48:45 by kferterb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@ package edu.school21.printer.logic;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+
 import javax.imageio.ImageIO;
 
 public class Logic {

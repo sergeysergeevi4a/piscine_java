@@ -6,13 +6,14 @@
 /*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 09:58:06 by kferterb          #+#    #+#             */
-/*   Updated: 2022/07/22 17:25:07 by kferterb         ###   ########.fr       */
+/*   Updated: 2022/07/22 18:48:34 by kferterb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 package edu.school21.printer.app;
 
 import java.io.IOException;
+
 import edu.school21.printer.logic.Logic;
 
 public class Program {
