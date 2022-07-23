@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="189181ed-570f-4fe6-930a-eb31b49d0260" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../../day03/ex02/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../day03/ex02/Program.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../day04/ex02/ImagesToChar/src/java/edu/school21/printer/app/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../day04/ex02/ImagesToChar/src/java/edu/school21/printer/app/Program.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../day04/ex02/ImagesToChar/src/java/edu/school21/printer/logic/Logic.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../day04/ex02/ImagesToChar/src/java/edu/school21/printer/logic/Logic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ChaseLogic/src/main/java/chaselogic/ChaseLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChaseLogic/src/main/java/chaselogic/ChaseLogic.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,6 +48,7 @@
       <updated>1658590288919</updated>
       <workItem from="1658590291000" duration="354000" />
       <workItem from="1658592737418" duration="312000" />
+      <workItem from="1658593868989" duration="179000" />
     </task>
     <servers />
   </component>
