@@ -6,7 +6,7 @@
 /*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 13:30:25 by kferterb          #+#    #+#             */
-/*   Updated: 2022/07/22 18:37:41 by kferterb         ###   ########.fr       */
+/*   Updated: 2022/07/23 13:26:31 by kferterb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ private static int sumOfList(List<Integer> list) {
 		
 		System.out.println("Sum: " + sumOfList(lists));
 
-		int range = arraySize / threadsCount + 1;
+		int range = (arraySize - 1) / threadsCount;
 		
 		List<Thread> listOfThreads = new ArrayList<>(threadsCount);
 
