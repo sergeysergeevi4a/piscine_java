@@ -12,10 +12,10 @@
 
 package game;
 
+import chaselogic.Map;
+
 import java.io.IOException;
 import java.util.Properties;
-
-import chaselogic.Map;
 
 public class Game {
 

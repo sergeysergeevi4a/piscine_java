@@ -84,8 +84,6 @@ public class RunGame {
             if (s.equals(EXIT)) {
                 break;
             }
-
-        scanner.close();
         
             switch (s) {
                 case UP:
@@ -123,6 +121,7 @@ public class RunGame {
                 }
             }
         }
+        scanner.close();
     }
 
     private void printMatrix(ColoredPrinter coloredPrinter) {
