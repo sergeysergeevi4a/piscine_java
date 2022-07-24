@@ -60,7 +60,7 @@
                         <descriptorRef>jar-with-dependencies</descriptorRef>
                     </descriptorRefs>
                     <appendAssemblyId>false</appendAssemblyId>
-                    <outputDirectory>${project.basedir}</outputDirectory>
+                    <outputDirectory>${project.target}</outputDirectory>
                 </configuration>
             </plugin>
         </plugins>

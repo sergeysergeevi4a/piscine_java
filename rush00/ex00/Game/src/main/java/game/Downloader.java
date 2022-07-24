@@ -18,9 +18,9 @@ import java.util.Properties;
 
 public class Downloader {
 
-    public static final String PRODUCTION_PATH = "src/main/resources/application-production.properties";
+    public static final String PRODUCTION_PATH = "../src/main/resources/application-production.properties";
 
-    public static final String DEV_PATH = "src/main/resources/application-dev.properties";
+    public static final String DEV_PATH = "../src/main/resources/application-dev.properties";
 
     public static final String COMMON_PATH = "src/main/resources/";
 
