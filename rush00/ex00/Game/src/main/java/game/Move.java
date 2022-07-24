@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/24 08:52:07 by kferterb          #+#    #+#             */
-/*   Updated: 2022/07/24 08:52:08 by kferterb         ###   ########.fr       */
+/*   Created: 2022/07/24 09:06:56 by kferterb          #+#    #+#             */
+/*   Updated: 2022/07/24 09:07:11 by kferterb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,26 @@ import chaselogic.Map;
 public class Move {
 
     public static final String GAME_OVER = "Game over!";
+    
     public static final String WIN = "You win!";
 
     private final char[][] matrix;
+
     private final Integer size;
+
     private Integer playerY;
+
     private Integer playerX;
+    
     private final Map map;
 
     public Move(char[][] matrix, Integer size, Map map) {
         this.matrix = matrix;
+
         this.size = size;
+        
         this.map = map;
+        
         initPlayerCoordinate();
     }
 

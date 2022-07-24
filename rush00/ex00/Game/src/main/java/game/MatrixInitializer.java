@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/24 08:52:04 by kferterb          #+#    #+#             */
-/*   Updated: 2022/07/24 08:53:43 by kferterb         ###   ########.fr       */
+/*   Created: 2022/07/24 09:06:15 by kferterb          #+#    #+#             */
+/*   Updated: 2022/07/24 09:06:41 by kferterb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,26 @@ public class MatrixInitializer {
     private static final Character border = 'B';
 
     private char[][] matrix;
+    
     private final Map map;
+
     private final Integer enemiesCount;
+
     private final Integer wallsCount;
+
     private final Integer size;
+    
     private final Random random;
 
     public MatrixInitializer(Map map, Integer enemiesCount, Integer wallsCount, Integer size) {
         this.map = map;
+
         this.enemiesCount = enemiesCount;
+
         this.wallsCount = wallsCount;
+
         this.size = size;
+        
         this.random = new Random();
     }
 

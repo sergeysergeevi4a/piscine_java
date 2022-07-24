@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/24 08:51:54 by kferterb          #+#    #+#             */
-/*   Updated: 2022/07/24 08:53:36 by kferterb         ###   ########.fr       */
+/*   Created: 2022/07/24 09:06:03 by kferterb          #+#    #+#             */
+/*   Updated: 2022/07/24 09:06:04 by kferterb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,27 @@ import chaselogic.Map;
 public class Game {
 
     public static final String ARGS_ERROR = "Error: bad ARGS!";
+
     public static final String PARAM_ERROR = "Error: bad params!";
+
     public static final String FILE_ERROR = "Error: property not found!";
 
     public static final String ENEMIES_KEY = "--enemiesCount=";
+
     public static final String WALLS_KEY = "--wallsCount=";
+
     public static final String SIZE_KEY = "--size=";
+
     public static final String PROFILE_KEY = "--profile=";
 
     private final String[] args;
 
     private Integer enemiesCount;
+
     private Integer wallsCount;
+
     private Integer size;
+
     private String profile;
 
     public Game(String[] args) {
@@ -41,10 +49,12 @@ public class Game {
 
     public void run() {
         if (checkArgs()) {
+
             return;
         }
 
         if (checkValues()) {
+            
             return;
         }
 

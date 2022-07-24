@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/24 08:51:33 by kferterb          #+#    #+#             */
-/*   Updated: 2022/07/24 08:51:34 by kferterb         ###   ########.fr       */
+/*   Created: 2022/07/24 09:03:54 by kferterb          #+#    #+#             */
+/*   Updated: 2022/07/24 09:04:29 by kferterb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,31 @@ import java.util.Properties;
 public class Map {
 
     public static final String ERROR = "Properties error";
+
     public static final String ERROR_PR = "Error properties key";
+
     public static final String DUPLICATE = "Error duplicate chars";
+
     public static final Integer SIZE = 5;
+
     private char emptyChar;
+
     private char playerChar;
+
     private char wallChar;
+
     private char goalChar;
+
     private char enemyChar;
+
     private String enemyColor;
+
     private String emptyColor;
+    
     private String playerColor;
+
     private String goalColor;
+    
     private String wallColor;
 
     public Map(Properties properties){
@@ -51,11 +64,17 @@ public class Map {
 
     private void checkRepeat() {
         char[] chars = new char[SIZE];
+
         chars[0] = emptyChar;
+
         chars[1] = playerChar;
+
         chars[2] = wallChar;
+
         chars[3] = goalChar;
+        
         chars[4] = enemyChar;
+        
         for (int i = 0; i < SIZE; i++) {
             Integer count = 0;
             for (int j = 0; j < SIZE; j++) {

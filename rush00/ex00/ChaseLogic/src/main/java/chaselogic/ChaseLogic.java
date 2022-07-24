@@ -5,26 +5,32 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/24 08:51:30 by kferterb          #+#    #+#             */
-/*   Updated: 2022/07/24 08:51:31 by kferterb         ###   ########.fr       */
+/*   Created: 2022/07/24 09:03:24 by kferterb          #+#    #+#             */
+/*   Updated: 2022/07/24 09:04:45 by kferterb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 package chaselogic;
 
 public class ChaseLogic {
-
+    
     public static final String GAME_OVER = "Game over!";
 
     private final char[][] matrix;
+
     private final Integer size;
+
     private final Map map;
+
     private Integer playerY;
+    
     private Integer playerX;
 
     public ChaseLogic(char[][] matrix, Integer size, Map map) {
         this.matrix = matrix;
+
         this.size = size;
+        
         this.map = map;
     }
 

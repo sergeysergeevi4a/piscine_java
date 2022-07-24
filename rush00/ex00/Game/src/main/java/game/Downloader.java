@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/24 08:51:51 by kferterb          #+#    #+#             */
-/*   Updated: 2022/07/24 08:51:52 by kferterb         ###   ########.fr       */
+/*   Created: 2022/07/24 09:05:59 by kferterb          #+#    #+#             */
+/*   Updated: 2022/07/24 09:06:00 by kferterb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,15 @@ import java.util.Properties;
 public class Downloader {
 
     public static final String PRODUCTION_PATH = "src/main/resources/application-production.properties";
+
     public static final String DEV_PATH = "src/main/resources/application-dev.properties";
+
     public static final String COMMON_PATH = "src/main/resources/";
+
     public static final String PROPERTY = ".properties";
+
     public static final String PRODUCTION_PROFILE = "production";
+    
     public static final String DEV_PROFILE = "dev";
 
     private final String profile;
