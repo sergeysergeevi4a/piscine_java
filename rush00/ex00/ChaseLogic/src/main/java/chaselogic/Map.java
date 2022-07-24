@@ -6,7 +6,7 @@
 /*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 09:03:54 by kferterb          #+#    #+#             */
-/*   Updated: 2022/07/24 09:04:29 by kferterb         ###   ########.fr       */
+/*   Updated: 2022/07/24 10:20:28 by kferterb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,32 +16,16 @@ import java.util.Properties;
 
 public class Map {
 
-    public static final String ERROR = "Properties error";
-
-    public static final String ERROR_PR = "Error properties key";
-
-    public static final String DUPLICATE = "Error duplicate chars";
-
     public static final Integer SIZE = 5;
-
     private char emptyChar;
-
     private char playerChar;
-
     private char wallChar;
-
     private char goalChar;
-
     private char enemyChar;
-
     private String enemyColor;
-
     private String emptyColor;
-    
     private String playerColor;
-
     private String goalColor;
-    
     private String wallColor;
 
     public Map(Properties properties){
@@ -64,15 +48,10 @@ public class Map {
 
     private void checkRepeat() {
         char[] chars = new char[SIZE];
-
         chars[0] = emptyChar;
-
         chars[1] = playerChar;
-
         chars[2] = wallChar;
-
         chars[3] = goalChar;
-        
         chars[4] = enemyChar;
         
         for (int i = 0; i < SIZE; i++) {
@@ -83,7 +62,7 @@ public class Map {
                 }
             }
             if (count > 1) {
-                System.err.println(DUPLICATE);
+                System.err.println("Error duplicate chars");
                 System.exit(-1);
             }
         }
@@ -131,7 +110,7 @@ public class Map {
 
     private void setEmptyChar(String emptyLine) {
         if (emptyLine == null){
-            System.err.println(ERROR_PR);
+            System.err.println("Error properties key");
             System.exit(-1);
         }
 
@@ -140,75 +119,75 @@ public class Map {
         } else if (emptyLine.isEmpty()) {
             this.emptyChar = ' ';
         } else {
-            System.err.println(ERROR);
+            System.err.println("Properties error");
             System.exit(-1);
         }
     }
 
     private void setPlayerChar(String playerLine) {
         if (playerLine == null){
-            System.err.println(ERROR_PR);
+            System.err.println("Error properties key");
             System.exit(-1);
         }
 
         if (playerLine.length() == 1){
             this.playerChar = playerLine.charAt(0);
         } else {
-            System.err.println(ERROR);
+            System.err.println("Properties error");
             System.exit(-1);
         }
     }
 
     private void setWallChar(String wallLine) {
         if (wallLine == null){
-            System.err.println(ERROR_PR);
+            System.err.println("Error properties key");
             System.exit(-1);
         }
 
         if (wallLine.length() == 1){
             this.wallChar = wallLine.charAt(0);
         } else {
-            System.err.println(ERROR);
+            System.err.println("Properties error");
             System.exit(-1);
         }
     }
 
     private void setGoalChar(String goalLIne) {
         if (goalLIne == null){
-            System.err.println(ERROR_PR);
+            System.err.println("Error properties key");
             System.exit(-1);
         }
 
         if (goalLIne.length() == 1){
             this.goalChar = goalLIne.charAt(0);
         } else {
-            System.err.println(ERROR);
+            System.err.println("Properties error");
             System.exit(-1);
         }
     }
 
     private void setEnemyChar(String enemyLine) {
         if (enemyLine == null){
-            System.err.println(ERROR_PR);
+            System.err.println("Error properties key");
             System.exit(-1);
         }
 
         if (enemyLine.length() == 1){
             this.enemyChar = enemyLine.charAt(0);
         } else {
-            System.err.println(ERROR);
+            System.err.println("Properties error");
             System.exit(-1);
         }
     }
 
     private void setEnemyColor(String color) {
         if (color == null){
-            System.err.println(ERROR_PR);
+            System.err.println("Error properties key");
             System.exit(-1);
         }
 
         if (color.isEmpty()){
-            System.err.println(ERROR);
+            System.err.println("Properties error");
             System.exit(-1);
         }
         this.enemyColor = color;
@@ -216,12 +195,12 @@ public class Map {
 
     private void setEmptyColor(String color) {
         if (color == null){
-            System.err.println(ERROR_PR);
+            System.err.println("Error properties key");
             System.exit(-1);
         }
 
         if (color.isEmpty()){
-            System.err.println(ERROR);
+            System.err.println("Properties error");
             System.exit(-1);
         }
         this.emptyColor = color;
@@ -229,12 +208,12 @@ public class Map {
 
     private void setPlayerColor(String color) {
         if (color == null){
-            System.err.println(ERROR_PR);
+            System.err.println("Error properties key");
             System.exit(-1);
         }
 
         if (color.isEmpty()){
-            System.err.println(ERROR);
+            System.err.println("Properties error");
             System.exit(-1);
         }
         this.playerColor = color;
@@ -242,12 +221,12 @@ public class Map {
 
     private void setGoalColor(String color) {
         if (color == null){
-            System.err.println(ERROR_PR);
+            System.err.println("Error properties key");
             System.exit(-1);
         }
 
         if (color.isEmpty()){
-            System.err.println(ERROR);
+            System.err.println("Properties error");
             System.exit(-1);
         }
         this.goalColor = color;
@@ -255,12 +234,12 @@ public class Map {
 
     public void setWallColor(String color) {
         if (color == null){
-            System.err.println(ERROR_PR);
+            System.err.println("Error properties key");
             System.exit(-1);
         }
 
         if (color.isEmpty()){
-            System.err.println(ERROR);
+            System.err.println("Properties error");
             System.exit(-1);
         }
         this.wallColor = color;

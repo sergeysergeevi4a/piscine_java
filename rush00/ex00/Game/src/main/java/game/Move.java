@@ -6,7 +6,7 @@
 /*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 09:06:56 by kferterb          #+#    #+#             */
-/*   Updated: 2022/07/24 09:07:11 by kferterb         ###   ########.fr       */
+/*   Updated: 2022/07/24 10:17:48 by kferterb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,25 +16,15 @@ import chaselogic.Map;
 
 public class Move {
 
-    public static final String GAME_OVER = "Game over!";
-    
-    public static final String WIN = "You win!";
-
     private final char[][] matrix;
-
     private final Integer size;
-
     private Integer playerY;
-
     private Integer playerX;
-    
     private final Map map;
 
     public Move(char[][] matrix, Integer size, Map map) {
         this.matrix = matrix;
-
         this.size = size;
-        
         this.map = map;
         
         initPlayerCoordinate();
@@ -57,10 +47,10 @@ public class Move {
             matrix[playerY][playerX] = map.getEmptyChar();
             playerY = playerY - 1;
         } else if (matrix[playerY - 1][playerX] == map.getGoalChar()) {
-            System.out.println(WIN);
+            System.out.println("You win");
             System.exit(0);
         } else if (matrix[playerY - 1][playerX] == map.getEnemyChar()) {
-            System.out.println(GAME_OVER);
+            System.out.println("Game over");
             System.exit(0);
         }
     }
@@ -71,10 +61,10 @@ public class Move {
             matrix[playerY][playerX] = map.getEmptyChar();
             playerY = playerY + 1;
         } else if (matrix[playerY + 1][playerX] == map.getGoalChar()) {
-            System.out.println(WIN);
+            System.out.println("You win");
             System.exit(0);
         } else if (matrix[playerY + 1][playerX] == map.getEnemyChar()) {
-            System.out.println(GAME_OVER);
+            System.out.println("Game over");
             System.exit(0);
         }
     }
@@ -85,10 +75,10 @@ public class Move {
             matrix[playerY][playerX] = map.getEmptyChar();
             playerX = playerX - 1;
         } else if (matrix[playerY][playerX - 1] == map.getGoalChar()) {
-            System.out.println(WIN);
+            System.out.println("You win");
             System.exit(0);
         } else if (matrix[playerY][playerX - 1] == map.getEnemyChar()) {
-            System.out.println(GAME_OVER);
+            System.out.println("Game over");
             System.exit(0);
         }
     }
@@ -99,10 +89,10 @@ public class Move {
             matrix[playerY][playerX] = map.getEmptyChar();
             playerX = playerX + 1;
         } else if (matrix[playerY][playerX + 1] == map.getGoalChar()) {
-            System.out.println(WIN);
+            System.out.println("You win");
             System.exit(0);
         } else if (matrix[playerY][playerX + 1] == map.getEnemyChar()) {
-            System.out.println(GAME_OVER);
+            System.out.println("Game over");
             System.exit(0);
         }
     }

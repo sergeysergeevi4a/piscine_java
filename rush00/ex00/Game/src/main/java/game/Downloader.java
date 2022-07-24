@@ -6,7 +6,7 @@
 /*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 09:05:59 by kferterb          #+#    #+#             */
-/*   Updated: 2022/07/24 09:06:00 by kferterb         ###   ########.fr       */
+/*   Updated: 2022/07/24 10:11:10 by kferterb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,6 @@ import java.util.Properties;
 
 public class Downloader {
 
-    public static final String PRODUCTION_PATH = "../src/main/resources/application-production.properties";
-
-    public static final String DEV_PATH = "../src/main/resources/application-dev.properties";
-
-    public static final String COMMON_PATH = "src/main/resources/";
-
-    public static final String PROPERTY = ".properties";
-
-    public static final String PRODUCTION_PROFILE = "production";
-    
-    public static final String DEV_PROFILE = "dev";
-
     private final String profile;
 
     public Downloader(String profile) {
@@ -38,12 +26,12 @@ public class Downloader {
 
     public Properties download() throws IOException {
         Properties properties = new Properties();
-        if (profile.equals(PRODUCTION_PROFILE)) {
-            properties.load(new FileReader(PRODUCTION_PATH));
-        } else if (profile.equals(DEV_PROFILE)) {
-            properties.load(new FileReader(DEV_PATH));
+        if (profile.equals("production")) {
+            properties.load(new FileReader("../src/main/resources/application-production.properties"));
+        } else if (profile.equals("dev")) {
+            properties.load(new FileReader("../src/main/resources/application-dev.properties"));
         } else {
-            properties.load(new FileReader(COMMON_PATH + profile + PROPERTY));
+            properties.load(new FileReader("src/main/resources/" + profile + ".properties"));
         }
         return properties;
     }

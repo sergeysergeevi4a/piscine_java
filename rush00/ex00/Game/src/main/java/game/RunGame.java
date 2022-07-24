@@ -6,7 +6,7 @@
 /*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 09:07:16 by kferterb          #+#    #+#             */
-/*   Updated: 2022/07/24 09:08:08 by kferterb         ###   ########.fr       */
+/*   Updated: 2022/07/24 10:17:25 by kferterb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,48 +21,16 @@ import chaselogic.ChaseLogic;
 import chaselogic.Map;
 
 public class RunGame {
-
-    private static final String MOVEMENTS = "1 - UP, 2 - DOWN, 3 - LEFT, 4 - RIGHT";
     
-    private static final String ACCEPT = "Accept enemy move by entering 8";
-    
-    private static final String HELP = "1 - up; 2 - down, 3 - left, 4 - right, 9 - exit";
-
-    private static final String MSG = "Your move, press 5 for help";
-
-    private static final String BAD_COLOR = "Error: bad color in property!";
-    
-    private static final String DEV_MODE = "dev";
-
-    private static final String UP = "1";
-
-    private static final String DOWN = "2";
-    
-    private static final String LEFT = "3";
-
-    private static final String RIGHT = "4";
-
-    private static final String EXIT = "9";
-
-    private static final String ACCEPT_SELECTOR = "8";
-    
-    private static final String HELP_SELECTOR = "5";
-
     private final char[][] matrix;
-    
     private final Map map;
-
     private final Integer size;
-    
     private final String profile;
 
     public RunGame(char[][] matrix, Map map, Integer size, String profile) {
         this.matrix = matrix;
-
         this.map = map;
-
         this.size = size;
-        
         this.profile = profile;
     }
 
@@ -78,35 +46,35 @@ public class RunGame {
         ChaseLogic chaseLogic = new ChaseLogic(matrix, size, map);
 
         while (true) {
-            System.out.println(MSG);
+            System.out.println("Your move, press 5 for help");
             String s = scanner.nextLine();
 
-            if (s.equals(EXIT)) {
+            if (s.equals("9")) {
                 break;
             }
         
             switch (s) {
-                case UP:
+                case "1":
                     move.up();
                     break;
-                case DOWN:
+                case "2":
                     move.down();
                     break;
-                case LEFT:
+                case "3":
                     move.left();
                     break;
-                case RIGHT:
+                case "4":
                     move.right();
                     break;
-                case HELP_SELECTOR:
-                    System.out.println(HELP);
+                case "5":
+                    System.out.println("1 - up; 2 - down, 3 - left, 4 - right, 9 - exit");
                     continue;
                 default:
-                    System.out.println(MOVEMENTS);
+                    System.out.println("1 - UP, 2 - DOWN, 3 - LEFT, 4 - RIGHT");
                     continue;
             }
 
-            if (profile.equals(DEV_MODE)) {
+            if (profile.equals("dev")) {
                 printMatrix(coloredPrinter);
                 System.out.println();
             }
@@ -114,10 +82,10 @@ public class RunGame {
             chaseLogic.move();
             printMatrix(coloredPrinter);
 
-            if (profile.equals(DEV_MODE)) {
-                System.out.println(ACCEPT);
-                while (!scanner.nextLine().equals(ACCEPT_SELECTOR)) {
-                    System.out.println(ACCEPT);
+            if (profile.equals("dev")) {
+                System.out.println("Accept enemy move by entering 8");
+                while (!scanner.nextLine().equals("8")) {
+                    System.out.println("Accept enemy move by entering 8");
                 }
             }
         }
@@ -132,7 +100,7 @@ public class RunGame {
             Ansi.BColor.valueOf(map.getWallColor());
             Ansi.BColor.valueOf(map.getEnemyColor());
         } catch (IllegalArgumentException e) {
-            System.err.println(BAD_COLOR);
+            System.err.println("Error: bad color in property");
             System.exit(-1);
         }
 

@@ -6,7 +6,7 @@
 /*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 09:03:24 by kferterb          #+#    #+#             */
-/*   Updated: 2022/07/24 09:04:45 by kferterb         ###   ########.fr       */
+/*   Updated: 2022/07/24 10:18:44 by kferterb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,15 @@ package chaselogic;
 
 public class ChaseLogic {
     
-    public static final String GAME_OVER = "Game over!";
-
     private final char[][] matrix;
-
     private final Integer size;
-
     private final Map map;
-
     private Integer playerY;
-    
     private Integer playerX;
 
     public ChaseLogic(char[][] matrix, Integer size, Map map) {
         this.matrix = matrix;
-
         this.size = size;
-        
         this.map = map;
     }
 
@@ -55,7 +47,7 @@ public class ChaseLogic {
             for (int x = 1; x < size + 1; x++) {
                 if (matrix[y][x] == map.getEnemyChar()) {
                     if (checkPlayer(y, x)) {
-                        System.out.println(GAME_OVER);
+                        System.out.println("Game over");
                         System.exit(-1);
                     }
                     moveEnemy(y, x, temp);

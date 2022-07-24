@@ -6,7 +6,7 @@
 /*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 09:06:15 by kferterb          #+#    #+#             */
-/*   Updated: 2022/07/24 09:06:41 by kferterb         ###   ########.fr       */
+/*   Updated: 2022/07/24 10:17:54 by kferterb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,29 +18,18 @@ import chaselogic.Map;
 
 public class MatrixInitializer {
 
-    private static final Character border = 'B';
-
     private char[][] matrix;
-    
     private final Map map;
-
     private final Integer enemiesCount;
-
     private final Integer wallsCount;
-
     private final Integer size;
-    
     private final Random random;
 
     public MatrixInitializer(Map map, Integer enemiesCount, Integer wallsCount, Integer size) {
         this.map = map;
-
         this.enemiesCount = enemiesCount;
-
         this.wallsCount = wallsCount;
-
         this.size = size;
-        
         this.random = new Random();
     }
 
@@ -132,7 +121,7 @@ public class MatrixInitializer {
         for (int y = 0; y < size + 2; y++) {
             for (int x = 0; x < size + 2; x++) {
                 if (y == 0 || x == 0 || y == size + 1 || x == size + 1) {
-                    matrix[y][x] = border;
+                    matrix[y][x] = 'B';
                 } else {
                     matrix[y][x] = map.getEmptyChar();
                 }

@@ -6,7 +6,7 @@
 /*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 09:06:03 by kferterb          #+#    #+#             */
-/*   Updated: 2022/07/24 09:06:04 by kferterb         ###   ########.fr       */
+/*   Updated: 2022/07/24 10:09:52 by kferterb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,29 +19,11 @@ import java.util.Properties;
 
 public class Game {
 
-    public static final String ARGS_ERROR = "Error: bad ARGS!";
-
-    public static final String PARAM_ERROR = "Error: bad params!";
-
-    public static final String FILE_ERROR = "Error: property not found!";
-
-    public static final String ENEMIES_KEY = "--enemiesCount=";
-
-    public static final String WALLS_KEY = "--wallsCount=";
-
-    public static final String SIZE_KEY = "--size=";
-
-    public static final String PROFILE_KEY = "--profile=";
-
     private final String[] args;
-
-    private Integer enemiesCount;
-
-    private Integer wallsCount;
-
-    private Integer size;
-
     private String profile;
+    private Integer enemiesCount;
+    private Integer wallsCount;
+    private Integer size;
 
     public Game(String[] args) {
         this.args = args;
@@ -64,7 +46,7 @@ public class Game {
         try {
             properties = downloader.download();
         } catch (IOException e) {
-            System.err.println(FILE_ERROR);
+            System.err.println("Error: property not found!");
             return;
         }
 
@@ -79,40 +61,40 @@ public class Game {
 
     private boolean checkValues() {
         if (enemiesCount < 1 || wallsCount < 0 || size < 5 || size > 100) {
-            throw new IllegalParametersException(PARAM_ERROR);
+            throw new IllegalParametersException("Error: bad params!");
         }
 
         if (enemiesCount + wallsCount > (size * 4 - 4) / 2 - 1) {
-            throw new IllegalParametersException(PARAM_ERROR);
+            throw new IllegalParametersException("Error: bad params!");
         }
         return false;
     }
 
     private boolean checkArgs() {
         if (args.length != 4) {
-            System.err.println(ARGS_ERROR);
+            System.err.println("Error: bad ARGS!");
             return true;
         }
 
-        if (!args[0].startsWith(ENEMIES_KEY) && !args[1].startsWith(WALLS_KEY)
-                && !args[2].startsWith(SIZE_KEY) && !args[3].startsWith(PROFILE_KEY)) {
-            System.err.println(PARAM_ERROR);
+        if (!args[0].startsWith("--enemiesCount=") && !args[1].startsWith("--wallsCount=")
+                && !args[2].startsWith("--size=") && !args[3].startsWith("--profile=")) {
+            System.err.println("Error: bad params!");
             return true;
         }
 
         try {
-            String s = args[0].replaceFirst(ENEMIES_KEY, "");
+            String s = args[0].replaceFirst("--enemiesCount=", "");
             enemiesCount = Integer.parseInt(s);
-            s = args[1].replaceFirst(WALLS_KEY, "");
+            s = args[1].replaceFirst("--wallsCount=", "");
             wallsCount = Integer.parseInt(s);
-            s = args[2].replaceFirst(SIZE_KEY, "");
+            s = args[2].replaceFirst("--size=", "");
             size = Integer.parseInt(s);
         } catch (NumberFormatException e) {
-            System.err.println(PARAM_ERROR);
+            System.err.println("Error: bad params!");
             return true;
         }
 
-        profile = args[3].replaceFirst(PROFILE_KEY, "");
+        profile = args[3].replaceFirst("--profile=", "");
         return false;
     }
 }
