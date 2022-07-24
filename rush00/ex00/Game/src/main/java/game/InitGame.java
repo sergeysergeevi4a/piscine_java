@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Game.java                                          :+:      :+:    :+:   */
+/*   InitGame.java                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/24 09:06:03 by kferterb          #+#    #+#             */
-/*   Updated: 2022/07/24 10:09:52 by kferterb         ###   ########.fr       */
+/*   Updated: 2022/07/24 10:31:26 by kferterb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,26 +17,24 @@ import chaselogic.Map;
 import java.io.IOException;
 import java.util.Properties;
 
-public class Game {
+public class InitGame {
 
     private final String[] args;
     private String profile;
-    private Integer enemiesCount;
-    private Integer wallsCount;
     private Integer size;
+    private Integer wallsCount;
+    private Integer enemiesCount;
 
-    public Game(String[] args) {
+    public InitGame(String[] args) {
         this.args = args;
     }
 
     public void run() {
         if (checkArgs()) {
-
             return;
         }
 
         if (checkValues()) {
-            
             return;
         }
 
