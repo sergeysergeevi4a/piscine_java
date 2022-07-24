@@ -40,7 +40,6 @@ public class InitGame {
         this.wallsCount = parser.getWallsCount();
         this.enemiesCount = parser.getEnemiesCount();
 
-        System.out.println(parser);
     }
 
     public void run() {

@@ -8,11 +8,11 @@ import game.IllegalParametersException;
 @Parameters(separators = "=")
 public class Parser {
 
-    @Parameter(names={"--enemiesCount"}, required = true, validateWith = PositiveInteger.class)
+    @Parameter(names={"--enemiesCount"}, required = true, validateWith = {PositiveInteger.class, EnemiesNotNull.class})
     private int enemiesCount;
     @Parameter(names={"--wallsCount"}, required = true, validateWith = PositiveInteger.class)
     private int wallsCount;
-    @Parameter(names={"--size"}, required = true, validateWith = PositiveInteger.class)
+    @Parameter(names={"--size"}, required = true, validateWith = {PositiveInteger.class, SizeInterval.class})
     private int size;
     @Parameter(names={"--profile"}, required = true)
     private String profile;
@@ -24,13 +24,13 @@ public class Parser {
                 .parse(args);
 
         if (checkSize()) {
-            throw new IllegalParametersException("Incorrect size");
+            throw new IllegalParametersException("Too many walls or enemies");
         }
 
     }
 
     private boolean checkSize() {
-        return enemiesCount + wallsCount > (size * 4 - 4) / 2 - 1;
+        return (enemiesCount + wallsCount > (size * 4 - 4) / 2 - 1);
     }
 
 

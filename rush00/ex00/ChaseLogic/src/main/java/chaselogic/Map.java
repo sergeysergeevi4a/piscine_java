@@ -30,7 +30,6 @@ public class Map {
 
     public Map(Properties properties){
         validationProperties(properties);
-        System.out.println(this);
     }
 
     private void validationProperties(Properties properties) {
