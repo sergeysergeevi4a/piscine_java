@@ -1,9 +1,21 @@
-package game;
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Game.java                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/24 08:51:54 by kferterb          #+#    #+#             */
+/*   Updated: 2022/07/24 08:53:36 by kferterb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-import chaselogic.Map;
+package game;
 
 import java.io.IOException;
 import java.util.Properties;
+
+import chaselogic.Map;
 
 public class Game {
 

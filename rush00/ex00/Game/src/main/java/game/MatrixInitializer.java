@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   MatrixInitializer.java                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/24 08:52:04 by kferterb          #+#    #+#             */
+/*   Updated: 2022/07/24 08:53:43 by kferterb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 package game;
 
-import chaselogic.Map;
-
 import java.util.Random;
+
+import chaselogic.Map;
 
 public class MatrixInitializer {
 

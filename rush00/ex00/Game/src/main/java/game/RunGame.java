@@ -1,11 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   RunGame.java                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/24 08:52:10 by kferterb          #+#    #+#             */
+/*   Updated: 2022/07/24 08:53:52 by kferterb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 package game;
 
-import chaselogic.ChaseLogic;
-import chaselogic.Map;
+import java.util.Scanner;
+
 import com.diogonunes.jcdp.color.ColoredPrinter;
 import com.diogonunes.jcdp.color.api.Ansi;
 
-import java.util.Scanner;
+import chaselogic.ChaseLogic;
+import chaselogic.Map;
 
 public class RunGame {
 
@@ -54,6 +67,8 @@ public class RunGame {
                 break;
             }
 
+            scanner.close();
+            
             switch (s) {
                 case UP:
                     move.up();
@@ -74,6 +89,7 @@ public class RunGame {
                     System.out.println(MOVEMENTS);
                     continue;
             }
+
 
             if (profile.equals(DEV_MODE)) {
                 printMatrix(coloredPrinter);
