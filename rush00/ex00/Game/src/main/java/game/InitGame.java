@@ -50,7 +50,6 @@ public class InitGame {
         Properties properties;
         try {
             properties = downloader.download();
-            System.out.println(properties);
         } catch (IOException e) {
             System.err.println(e.getMessage());
             System.err.println("Error: property not found!");
@@ -58,7 +57,6 @@ public class InitGame {
         }
 
         Map map = new Map(properties);
-        System.out.println(map);
 
         MatrixInitializer matrixInitializer = new MatrixInitializer(map, enemiesCount, wallsCount, size);
         char[][] matrix = matrixInitializer.init();

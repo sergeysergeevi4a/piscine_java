@@ -66,7 +66,7 @@ public class ChaseLogic {
 
     private void moveEnemy(int y, int x, char[][] matrix) {
         if (y > playerY) {
-            if (x > playerX) {
+            if (x >= playerX) {
                 if (x - playerX > y - playerY) {
                     if (this.matrix[y][x - 1] == map.getEmptyChar()
                             && matrix[y][x - 1] != map.getEnemyChar()) {

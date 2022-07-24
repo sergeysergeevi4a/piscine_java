@@ -75,23 +75,27 @@ public class RunGame {
             }
 
             if (profile.equals("production")) {
-                printMatrix(coloredPrinter);
-
+                chaseLogic.move();
                 System.out.println();
-
             }
 
-            chaseLogic.move();
             printMatrix(coloredPrinter);
 
-
-
             if (profile.equals("dev")) {
-                System.out.println("Accept enemy move by entering 8");
-                while (!scanner.nextLine().equals("8")) {
-                    System.out.println("Accept enemy move by entering 8");
+
+                System.out.println("Accept enemy move by entering 8 or decline by entering 7");
+                String input = scanner.nextLine();
+                while (!"8".equals(input) && !"7".equals(input)) {
+                    System.out.println("Accept enemy move by entering 8 or decline by entering 7");
+                    input = scanner.nextLine();
                 }
+                if ("8".equals(input)) {
+                    chaseLogic.move();
+                }
+                printMatrix(coloredPrinter);
+
             }
+
         }
         scanner.close();
     }
