@@ -74,13 +74,17 @@ public class RunGame {
                     continue;
             }
 
-            if (profile.equals("dev")) {
+            if (profile.equals("production")) {
                 printMatrix(coloredPrinter);
+
                 System.out.println();
+
             }
 
             chaseLogic.move();
             printMatrix(coloredPrinter);
+
+
 
             if (profile.equals("dev")) {
                 System.out.println("Accept enemy move by entering 8");
