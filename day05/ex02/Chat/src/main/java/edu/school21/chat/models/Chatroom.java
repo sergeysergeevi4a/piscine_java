@@ -1,14 +1,26 @@
-package edu.models;
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Chatroom.java                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/25 20:44:31 by kferterb          #+#    #+#             */
+/*   Updated: 2022/07/25 20:44:32 by kferterb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+package edu.school21.chat.models;
 
 import java.util.List;
 import java.util.Objects;
 
 public class Chatroom {
 
-    private Long id;
-    private String name;
-    private User owner;
-    private List<Message> messages;
+    private final Long id;
+    private final String name;
+    private final User owner;
+    private final List<Message> messages;
 
     public Chatroom(Long id, String name, User owner, List<Message> messages) {
         this.id = id;

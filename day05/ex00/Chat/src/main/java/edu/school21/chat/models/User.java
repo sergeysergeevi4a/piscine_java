@@ -1,4 +1,16 @@
-package edu.models;
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   User.java                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/25 20:06:46 by kferterb          #+#    #+#             */
+/*   Updated: 2022/07/25 20:06:47 by kferterb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+package edu.school21.chat.models;
 
 import java.util.List;
 import java.util.Objects;

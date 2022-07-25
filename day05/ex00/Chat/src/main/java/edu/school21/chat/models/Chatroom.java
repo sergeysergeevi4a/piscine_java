@@ -1,4 +1,16 @@
-package edu.models;
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Chatroom.java                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/25 20:06:40 by kferterb          #+#    #+#             */
+/*   Updated: 2022/07/25 20:06:41 by kferterb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+package edu.school21.chat.models;
 
 import java.util.List;
 import java.util.Objects;
@@ -9,13 +21,6 @@ public class Chatroom {
     private String name;
     private String owner;
     private List<Message> messages;
-
-    public Chatroom(Long id, String name, String owner, List<Message> messages) {
-        this.id = id;
-        this.name = name;
-        this.owner = owner;
-        this.messages = messages;
-    }
 
     @Override
     public boolean equals(Object o) {

@@ -1,9 +1,21 @@
-package edu.repositories;
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   MessagesRepositoryJdbcImpl.java                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/25 20:44:44 by kferterb          #+#    #+#             */
+/*   Updated: 2022/07/25 20:44:45 by kferterb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-import edu.app.NotSavedSubEntityException;
-import edu.models.Chatroom;
-import edu.models.Message;
-import edu.models.User;
+package edu.school21.chat.repositories;
+
+import edu.school21.chat.app.NotSavedSubEntityException;
+import edu.school21.chat.models.Chatroom;
+import edu.school21.chat.models.Message;
+import edu.school21.chat.models.User;
 
 import javax.sql.DataSource;
 import java.sql.*;
@@ -53,8 +65,8 @@ public class MessagesRepositoryJdbcImpl implements MessagesRepository {
         try {
             set.next();
             Long messageId = set.getLong(ID);
-            Long authorId = set.getLong(AUTHOR);
-            Long roomId = set.getLong(ROOM);
+            long authorId = set.getLong(AUTHOR);
+            long roomId = set.getLong(ROOM);
             String message = set.getString(TEXT);
             Timestamp timestamp = set.getTimestamp(TIME);
 

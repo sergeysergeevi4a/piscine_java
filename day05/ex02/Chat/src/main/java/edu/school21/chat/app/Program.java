@@ -1,11 +1,23 @@
-package edu.app;
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Program.java                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/25 20:44:26 by kferterb          #+#    #+#             */
+/*   Updated: 2022/07/25 20:44:27 by kferterb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+package edu.school21.chat.app;
 
 import com.zaxxer.hikari.HikariDataSource;
-import edu.models.Chatroom;
-import edu.models.Message;
-import edu.models.User;
-import edu.repositories.MessagesRepository;
-import edu.repositories.MessagesRepositoryJdbcImpl;
+import edu.school21.chat.models.Chatroom;
+import edu.school21.chat.models.Message;
+import edu.school21.chat.models.User;
+import edu.school21.chat.repositories.MessagesRepository;
+import edu.school21.chat.repositories.MessagesRepositoryJdbcImpl;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -20,9 +32,8 @@ public class Program {
 
     public static final String DB_URL = "jdbc:postgresql://localhost/";
     public static final String DB_USER = "postgres";
-    public static final String SCHEMA_PATH = "src/main/resources/schema.sql";
-    public static final String DATA_PATH = "src/main/resources/data.sql";
-
+    public static final String SCHEMA_PATH = "../src/main/resources/schema.sql";
+    public static final String DATA_PATH = "../src/main/resources/data.sql";
     public static final String CONNECTION_ERROR = "Error: can't connection to DB";
     public static final String SQL_QUERY_ERROR = "Error: SQLException";
     public static final String FILE_NOT_FOUND = "Error: file not found";
@@ -61,9 +72,8 @@ public class Program {
             insertToDB(connection, dataQueries);
 
             User creator = new User(1L, "user", "user", new ArrayList<Chatroom>(), new ArrayList<Chatroom>());
-            User author = creator;
             Chatroom room = new Chatroom(3L, "room", creator, new ArrayList<Message>());
-            Message message = new Message(null, author, room, "Hello!", Timestamp.valueOf(LocalDateTime.now()));
+            Message message = new Message(null, creator, room, "Hello!", Timestamp.valueOf(LocalDateTime.now()));
 
             MessagesRepository messagesRepository = new MessagesRepositoryJdbcImpl(dataSource);
             messagesRepository.save(message);

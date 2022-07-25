@@ -1,15 +1,27 @@
-package edu.models;
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   User.java                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/25 20:44:38 by kferterb          #+#    #+#             */
+/*   Updated: 2022/07/25 20:44:39 by kferterb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+package edu.school21.chat.models;
 
 import java.util.List;
 import java.util.Objects;
 
 public class User {
 
-    private Long id;
-    private String login;
-    private String password;
-    private List<Chatroom> rooms;
-    private List<Chatroom> socializedRooms;
+    private final Long id;
+    private final String login;
+    private final String password;
+    private final List<Chatroom> rooms;
+    private final List<Chatroom> socializedRooms;
 
     public User(Long id, String login, String password, List<Chatroom> rooms, List<Chatroom> socializedRooms) {
         this.id = id;

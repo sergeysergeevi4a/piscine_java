@@ -1,8 +1,20 @@
-package edu.repositories;
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   MessagesRepositoryJdbcImpl.java                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/25 20:07:24 by kferterb          #+#    #+#             */
+/*   Updated: 2022/07/25 20:07:25 by kferterb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-import edu.models.Chatroom;
-import edu.models.Message;
-import edu.models.User;
+package edu.school21.chat.repositories;
+
+import edu.school21.chat.models.Chatroom;
+import edu.school21.chat.models.Message;
+import edu.school21.chat.models.User;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -23,11 +35,9 @@ public class MessagesRepositoryJdbcImpl implements MessagesRepository {
     public static final String LOGIN = "login";
     public static final String PASSWORD = "password";
     public static final String NAME = "name";
-
     public static final String SELECT_FROM_USERS_WHERE_ID = "SELECT * FROM users WHERE id=";
     public static final String SELECT_FROM_CHATROOMS_WHERE_ID = "SELECT * FROM chatrooms WHERE id=";
     public static final String SELECT_FROM_MESSAGES_WHERE_ID = "SELECT * FROM messages WHERE id=";
-
     private final DataSource dataSource;
 
     public MessagesRepositoryJdbcImpl(DataSource dataSource) {
@@ -59,8 +69,8 @@ public class MessagesRepositoryJdbcImpl implements MessagesRepository {
         try {
             set.next();
             Long messageId = set.getLong(ID);
-            Long authorId = set.getLong(AUTHOR);
-            Long roomId = set.getLong(ROOM);
+            long authorId = set.getLong(AUTHOR);
+            long roomId = set.getLong(ROOM);
             String message = set.getString(TEXT);
             Timestamp timestamp = set.getTimestamp(TIME);
 

@@ -1,4 +1,16 @@
-package edu.models;
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Message.java                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/25 20:44:35 by kferterb          #+#    #+#             */
+/*   Updated: 2022/07/25 20:44:36 by kferterb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+package edu.school21.chat.models;
 
 import java.sql.Timestamp;
 import java.util.Objects;
@@ -6,10 +18,10 @@ import java.util.Objects;
 public class Message {
 
     private Long id;
-    private User author;
-    private Chatroom room;
-    private String text;
-    private Timestamp dateTime;
+    private final User author;
+    private final Chatroom room;
+    private final String text;
+    private final Timestamp dateTime;
 
     public Message(Long id, User author, Chatroom room, String text, Timestamp timestamp) {
         this.id = id;
