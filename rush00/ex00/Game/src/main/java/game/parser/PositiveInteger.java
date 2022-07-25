@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   PositiveInteger.java                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/25 12:30:41 by kferterb          #+#    #+#             */
+/*   Updated: 2022/07/25 12:30:42 by kferterb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 package game.parser;
 
 import com.beust.jcommander.IParameterValidator;

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   EnemiesNotNull.java                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/25 12:30:34 by kferterb          #+#    #+#             */
+/*   Updated: 2022/07/25 12:30:36 by kferterb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 package game.parser;
 
 import com.beust.jcommander.IParameterValidator;
