@@ -14,11 +14,9 @@ package edu.school21.numbers;
 
 public class NumberWorker {
 
-    public static final String ERROR_ILLEGAL_NUMBER = "Error: Illegal number!";
-
     public boolean isPrime(int number) {
         if (number <= 1) {
-            throw new IllegalNumberException(ERROR_ILLEGAL_NUMBER);
+            throw new IllegalNumberException("Error: Illegal number!");
         }
 
         if (number == 2) {

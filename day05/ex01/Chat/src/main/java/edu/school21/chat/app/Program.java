@@ -29,32 +29,21 @@ import java.util.Scanner;
 
 public class Program {
 
-    public static final String DB_URL = "jdbc:postgresql://localhost/";
-    public static final String DB_USER = "postgres";
-    public static final String SCHEMA_PATH = "../src/main/resources/schema.sql";
-    public static final String DATA_PATH = "../src/main/resources/data.sql";
-    public static final String CONNECTION_ERROR = "Error: can't connection to DB";
-    public static final String SQL_QUERY_ERROR = "Error: SQLException";
-    public static final String FILE_NOT_FOUND = "Error: file not found";
-    public static final String PUT_LONG = "Error: put long!";
-    public static final String NULL = "null";
-    public static final String MSG_TO_USER = "Enter a message ID";
-
     public static void main(String[] args) {
         try (HikariDataSource dataSource = new HikariDataSource()) {
-            dataSource.setJdbcUrl(DB_URL);
-            dataSource.setUsername(DB_USER);
+            dataSource.setJdbcUrl("jdbc:postgresql://localhost/");
+            dataSource.setUsername("postgres");
             dataSource.setPassword(null);
 
             Connection connection;
             try {
                 connection = dataSource.getConnection();
                 if (connection == null) {
-                    System.err.println(CONNECTION_ERROR);
+                    System.err.println("Error: can't connection to DB");
                     return;
                 }
             } catch (SQLException e) {
-                System.err.println(CONNECTION_ERROR);
+                System.err.println("Error: can't connection to DB");
                 return;
             }
 
@@ -62,10 +51,10 @@ public class Program {
             List<String> dataQueries;
 
             try {
-                schemaQueries = Files.readAllLines(Paths.get(SCHEMA_PATH));
-                dataQueries = Files.readAllLines(Paths.get(DATA_PATH));
+                schemaQueries = Files.readAllLines(Paths.get("../src/main/resources/schema.sql"));
+                dataQueries = Files.readAllLines(Paths.get("../src/main/resources/data.sql"));
             } catch (IOException e) {
-                System.err.println(FILE_NOT_FOUND);
+                System.err.println("Error: file not found");
                 return;
             }
 
@@ -75,14 +64,14 @@ public class Program {
 
             MessagesRepository messagesRepository = new MessagesRepositoryJdbcImpl(dataSource);
 
-            System.out.println(MSG_TO_USER);
+            System.out.println("Enter a message ID");
 
             long l;
 
             try (Scanner scanner = new Scanner(System.in)) {
                 l = scanner.nextLong();
             } catch (InputMismatchException e) {
-                System.err.println(PUT_LONG);
+                System.err.println("Error: put long!");
                 return;
             }
 
@@ -91,7 +80,7 @@ public class Program {
             if (message.isPresent()) {
                 System.out.println(message.get());
             } else {
-                System.out.println(NULL);
+                System.out.println("null");
             }
         }
     }
@@ -101,7 +90,7 @@ public class Program {
             try {
                 connection.createStatement().execute(schemaQuery);
             } catch (SQLException e) {
-                System.err.println(SQL_QUERY_ERROR);
+                System.err.println("Error: SQLException");
                 return;
             }
         }
@@ -112,7 +101,7 @@ public class Program {
             try {
                 connection.createStatement().execute(dataQuery);
             } catch (SQLException e) {
-                System.err.println(SQL_QUERY_ERROR);
+                System.err.println("Error: SQLException");
                 return;
             }
         }

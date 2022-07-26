@@ -25,19 +25,6 @@ import java.util.Optional;
 
 public class MessagesRepositoryJdbcImpl implements MessagesRepository {
 
-    public static final String CONNECTION_ERROR = "Error: can't connection to DB";
-    public static final String SQL_QUERY_ERROR = "Error: SQLException";
-    public static final String ID = "id";
-    public static final String AUTHOR = "author";
-    public static final String ROOM = "room";
-    public static final String TEXT = "text";
-    public static final String TIME = "time";
-    public static final String LOGIN = "login";
-    public static final String PASSWORD = "password";
-    public static final String NAME = "name";
-    public static final String SELECT_FROM_USERS_WHERE_ID = "SELECT * FROM users WHERE id=";
-    public static final String SELECT_FROM_CHATROOMS_WHERE_ID = "SELECT * FROM chatrooms WHERE id=";
-    public static final String SELECT_FROM_MESSAGES_WHERE_ID = "SELECT * FROM messages WHERE id=";
     private final DataSource dataSource;
 
     public MessagesRepositoryJdbcImpl(DataSource dataSource) {
@@ -51,7 +38,7 @@ public class MessagesRepositoryJdbcImpl implements MessagesRepository {
         try {
             connection = dataSource.getConnection();
         } catch (SQLException e) {
-            System.err.println(CONNECTION_ERROR);
+            System.err.println("Error: can't connection to DB");
             return Optional.empty();
         }
 
@@ -59,47 +46,44 @@ public class MessagesRepositoryJdbcImpl implements MessagesRepository {
 
         try {
             set = connection.createStatement()
-                    .executeQuery(SELECT_FROM_MESSAGES_WHERE_ID + id);
+                    .executeQuery("SELECT * FROM messages WHERE id=" + id);
         } catch (SQLException e) {
-            System.err.println(SQL_QUERY_ERROR);
+            System.err.println("Error: SQLException");
             return Optional.empty();
         }
 
 
         try {
             set.next();
-            Long messageId = set.getLong(ID);
-            long authorId = set.getLong(AUTHOR);
-            long roomId = set.getLong(ROOM);
-            String message = set.getString(TEXT);
-            Timestamp timestamp = set.getTimestamp(TIME);
+            Long messageId = set.getLong("id");
+            long authorId = set.getLong("author");
+            long roomId = set.getLong("room");
+            String message = set.getString("text");
+            Timestamp timestamp = set.getTimestamp("time");
 
             ResultSet authorSet = connection
                     .createStatement()
-                    .executeQuery(SELECT_FROM_USERS_WHERE_ID + authorId);
+                    .executeQuery("SELECT * FROM users WHERE id=" + authorId);
             ResultSet roomSet = connection
                     .createStatement()
-                    .executeQuery(SELECT_FROM_CHATROOMS_WHERE_ID + roomId);
+                    .executeQuery("SELECT * FROM chatrooms WHERE id=" + roomId);
 
             authorSet.next();
             roomSet.next();
-
-            Long authorIdSet = authorSet.getLong(ID);
-            String authorLoginSet = authorSet.getString(LOGIN);
-            String authorPasswordSet = authorSet.getString(PASSWORD);
-
-            Long roomIdSet = roomSet.getLong(ID);
-            String roomName = roomSet.getString(NAME);
+            Long authorIdSet = authorSet.getLong("id");
+            String authorLoginSet = authorSet.getString("login");
+            String authorPasswordSet = authorSet.getString("password");
+            Long roomIdSet = roomSet.getLong("id");
+            String roomName = roomSet.getString("name");
 
             Message msg = new Message(
                     messageId,
                     new User(authorIdSet, authorLoginSet, authorPasswordSet, null, null),
                     new Chatroom(roomIdSet, roomName, null, null),
                     message, timestamp);
-
             return Optional.of(msg);
         } catch (SQLException e) {
-            System.err.println(SQL_QUERY_ERROR);
+            System.err.println("Error: SQLException");
             System.exit(1);
         }
         return Optional.empty();

@@ -30,29 +30,21 @@ import java.util.*;
 
 public class Program {
 
-    public static final String DB_URL = "jdbc:postgresql://localhost/";
-    public static final String DB_USER = "postgres";
-    public static final String SCHEMA_PATH = "../src/main/resources/schema.sql";
-    public static final String DATA_PATH = "../src/main/resources/data.sql";
-    public static final String CONNECTION_ERROR = "Error: can't connection to DB";
-    public static final String SQL_QUERY_ERROR = "Error: SQLException";
-    public static final String FILE_NOT_FOUND = "Error: file not found";
-
     public static void main(String[] args) {
         try (HikariDataSource dataSource = new HikariDataSource()) {
-            dataSource.setJdbcUrl(DB_URL);
-            dataSource.setUsername(DB_USER);
+            dataSource.setJdbcUrl("jdbc:postgresql://localhost/");
+            dataSource.setUsername("postgres");
             dataSource.setPassword(null);
 
             Connection connection;
             try {
                 connection = dataSource.getConnection();
                 if (connection == null) {
-                    System.err.println(CONNECTION_ERROR);
+                    System.err.println("Error: can't connection to DB");
                     return;
                 }
             } catch (SQLException e) {
-                System.err.println(CONNECTION_ERROR);
+                System.err.println("Error: can't connection to DB");
                 return;
             }
 
@@ -60,10 +52,10 @@ public class Program {
             List<String> dataQueries;
 
             try {
-                schemaQueries = Files.readAllLines(Paths.get(SCHEMA_PATH));
-                dataQueries = Files.readAllLines(Paths.get(DATA_PATH));
+                schemaQueries = Files.readAllLines(Paths.get("../src/main/resources/schema.sql"));
+                dataQueries = Files.readAllLines(Paths.get("../src/main/resources/data.sql"));
             } catch (IOException e) {
-                System.err.println(FILE_NOT_FOUND);
+                System.err.println("Error: file not found");
                 return;
             }
 
@@ -87,7 +79,7 @@ public class Program {
             try {
                 connection.createStatement().execute(schemaQuery);
             } catch (SQLException e) {
-                System.err.println(SQL_QUERY_ERROR);
+                System.err.println("Error: SQLException");
                 return;
             }
         }
@@ -98,7 +90,7 @@ public class Program {
             try {
                 connection.createStatement().execute(dataQuery);
             } catch (SQLException e) {
-                System.err.println(SQL_QUERY_ERROR);
+                System.err.println("Error: SQLException");
                 return;
             }
         }

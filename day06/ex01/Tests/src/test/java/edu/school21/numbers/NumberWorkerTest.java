@@ -20,8 +20,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class NumberWorkerTest {
 
-    public static final String NOT_THROWN_EXCEPTION = "Not thrown exception";
-
     @ParameterizedTest
     @ValueSource(ints = {2, 3, 113})
     public void isPrimeForPrimes(int number) {
@@ -39,7 +37,7 @@ public class NumberWorkerTest {
     public void isPrimeForIncorrectNumbers(int number) {
         assertThrows(IllegalNumberException.class, () -> {
             new NumberWorker().isPrime(number);
-        }, NOT_THROWN_EXCEPTION);
+        }, "Not thrown exception");
     }
 
     @ParameterizedTest

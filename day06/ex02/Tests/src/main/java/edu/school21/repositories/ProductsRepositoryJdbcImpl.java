@@ -26,13 +26,6 @@ import java.util.Optional;
 
 public class ProductsRepositoryJdbcImpl implements ProductsRepository {
 
-    public static final String FIND_ALL = "SELECT * FROM productTable";
-    public static final String FIND_BY_ID = "SELECT * FROM productTable WHERE id=";
-    public static final String UPDATE_NAME = "UPDATE productTable SET name=? WHERE id=?";
-    public static final String UPDATE_PRICE = "UPDATE productTable SET price=? WHERE id=?";
-    public static final String SAVE = "INSERT INTO PRODUCTTABLE (NAME, PRICE) VALUES (?, ?)";
-    public static final String DELETE = "DELETE FROM PRODUCTTABLE WHERE ID=?";
-
     public static final String ID = "id";
     public static final String NAME = "name";
     public static final String PRICE = "price";
@@ -56,7 +49,7 @@ public class ProductsRepositoryJdbcImpl implements ProductsRepository {
 
         ResultSet set = connection
                 .createStatement()
-                .executeQuery(FIND_ALL);
+                .executeQuery("SELECT * FROM productTable");
 
         while (set.next()) {
             Product product = new Product(
@@ -72,7 +65,7 @@ public class ProductsRepositoryJdbcImpl implements ProductsRepository {
     public Optional<Product> findById(Long id) throws SQLException {
         ResultSet set = connection
                 .createStatement()
-                .executeQuery(FIND_BY_ID + id);
+                .executeQuery("SELECT * FROM productTable WHERE id=" + id);
 
         set.next();
 
@@ -88,11 +81,11 @@ public class ProductsRepositoryJdbcImpl implements ProductsRepository {
     public void update(Product product) throws SQLException {
         PreparedStatement preparedStatement;
         preparedStatement = connection
-                .prepareStatement(UPDATE_NAME);
+                .prepareStatement("UPDATE productTable SET name=? WHERE id=?");
         preparedStatement.setString(1, product.getName());
         preparedStatement.setLong(2, product.getId());
         preparedStatement.executeUpdate();
-        preparedStatement = connection.prepareStatement(UPDATE_PRICE);
+        preparedStatement = connection.prepareStatement("UPDATE productTable SET price=? WHERE id=?");
         preparedStatement.setInt(1, product.getPrice());
         preparedStatement.setLong(2, product.getId());
         preparedStatement.executeUpdate();
@@ -102,7 +95,7 @@ public class ProductsRepositoryJdbcImpl implements ProductsRepository {
     @Override
     public void save(Product product) throws SQLException {
         PreparedStatement preparedStatement;
-        preparedStatement = connection.prepareStatement(SAVE);
+        preparedStatement = connection.prepareStatement("INSERT INTO PRODUCTTABLE (NAME, PRICE) VALUES (?, ?)");
         preparedStatement.setString(1, product.getName());
         preparedStatement.setInt(2, product.getPrice());
         preparedStatement.execute();
@@ -112,7 +105,7 @@ public class ProductsRepositoryJdbcImpl implements ProductsRepository {
     public void delete(Long id) throws SQLException {
         PreparedStatement preparedStatement;
 
-        preparedStatement = connection.prepareStatement(DELETE);
+        preparedStatement = connection.prepareStatement("DELETE FROM PRODUCTTABLE WHERE ID=?");
         preparedStatement.setLong(1, id);
         preparedStatement.execute();
 
