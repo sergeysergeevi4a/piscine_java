@@ -1,0 +1,53 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   NumberWorker.java                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/26 15:50:59 by kferterb          #+#    #+#             */
+/*   Updated: 2022/07/26 15:51:00 by kferterb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+package edu.school21.numbers;
+
+public class NumberWorker {
+
+    public static final String ERROR_ILLEGAL_NUMBER = "Error: Illegal number!";
+
+    public boolean isPrime(int number) {
+        if (number <= 1) {
+            throw new IllegalNumberException(ERROR_ILLEGAL_NUMBER);
+        }
+
+        if (number == 2) {
+            return true;
+        }
+
+        if (number % 2 == 0) {
+            return false;
+        } else {
+            for (long i = 2; i * i <= number; i++) {
+                if (number % i == 0) {
+                    return false;
+                }
+            }
+            return true;
+        }
+    }
+
+    public int digitsSum(int number) {
+        if (number < 0) {
+            number = -number;
+        }
+
+        int sum = 0;
+
+        while (number != 0) {
+            sum += number % 10;
+            number /= 10;
+        }
+        return sum;
+    }
+}

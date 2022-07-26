@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   MessagesRepository.java                            :+:      :+:    :+:   */
+/*   NotSavedSubEntityException.java                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/25 20:44:41 by kferterb          #+#    #+#             */
-/*   Updated: 2022/07/25 20:44:42 by kferterb         ###   ########.fr       */
+/*   Created: 2022/07/25 20:44:22 by kferterb          #+#    #+#             */
+/*   Updated: 2022/07/25 20:44:23 by kferterb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-package edu.school21.chat.repositories;
+package edu.school21.chat.app;
 
-import edu.school21.chat.models.Message;
+public class NotSavedSubEntityException extends RuntimeException {
 
-import java.util.Optional;
-
-public interface MessagesRepository {
-    Optional<Message> findById(Long id);
-
-    void save(Message message);
-
+    public NotSavedSubEntityException(String s) {
+        super(s);
+    }
 }
