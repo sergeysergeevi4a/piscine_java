@@ -19,8 +19,6 @@ import java.lang.reflect.Parameter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import static app.GetParamObject.getParamObject;
-
 public class UpdateObject {
 
     static void updateObject(Object object, Scanner scanner, ArrayList<String> strings) {
@@ -88,7 +86,7 @@ public class UpdateObject {
 
             for (int i = 0; i < parameters.length; i++) {
                 System.out.println(strings.get(i) + ":");
-                params.add(getParamObject(parameters[i], scanner));
+                params.add(GetParamObject.getParamObject(parameters[i], scanner));
             }
 
             if (!(params.get(params.size() - 1) instanceof String)) {
@@ -100,7 +98,7 @@ public class UpdateObject {
                 System.out.println("Object created: " + object);
                 return object;
             } catch (InstantiationException | IllegalAccessException | InvocationTargetException e) {
-                e.printStackTrace();
+                System.err.println("error format");
             }
         }
         return null;

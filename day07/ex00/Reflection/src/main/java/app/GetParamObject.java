@@ -37,7 +37,8 @@ public class GetParamObject {
                     System.exit(-1);
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            System.err.println("error format");
+            System.exit(-1);
         }
         return null;
     }

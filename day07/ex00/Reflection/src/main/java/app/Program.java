@@ -21,12 +21,6 @@ import java.util.Scanner;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import static app.CallMethod.callMethod;
-import static app.PrintFields.printFields;
-import static app.PrintMethods.printMethods;
-import static app.UpdateObject.createInstance;
-import static app.UpdateObject.updateObject;
-
 public class Program {
 
     public static void main(String[] args) {
@@ -57,19 +51,19 @@ public class Program {
 
             Class<?> clazz = Class.forName("classes" + "." + result);
             System.out.println("---------------------");
-            ArrayList<String> strings = printFields(clazz);
-            printMethods(clazz);
+            ArrayList<String> strings = PrintFields.printFields(clazz);
+            PrintMethods.printMethods(clazz);
             System.out.println("---------------------");
-            Object object = createInstance(strings, clazz, scanner);
+            Object object = UpdateObject.createInstance(strings, clazz, scanner);
 
             if (object == null) {
                 return;
             }
 
             System.out.println("---------------------");
-            updateObject(object, scanner, strings);
+            UpdateObject.updateObject(object, scanner, strings);
             System.out.println("---------------------");
-            callMethod(object, scanner);
+            CallMethod.callMethod(object, scanner);
 
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
