@@ -1,22 +1,9 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   OrmManager.java                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/27 10:55:28 by kferterb          #+#    #+#             */
-/*   Updated: 2022/07/27 10:56:22 by kferterb         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 package app;
 
 import models.OrmColumn;
 import models.OrmColumnId;
 import models.OrmEntity;
 import org.reflections.Reflections;
-
 import javax.sql.DataSource;
 import java.lang.reflect.Field;
 import java.sql.Connection;
@@ -27,114 +14,72 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class OrmManager {
-
-    public static final String CONNECTION_ERROR = "Error: can't connection to DB";
-    public static final String SERIAL_PRIMARY_KEY = " SERIAL PRIMARY KEY";
-    public static final String CREATE_TABLE_IF_NOT_EXISTS_ = "CREATE TABLE IF NOT EXISTS ";
-    public static final String SELECT_FROM = "SELECT * FROM ";
-    public static final String WHERE_ID = " WHERE id=";
-    public static final String ID = "id";
-    public static final String STRING = "String";
-    public static final String SET = " SET ";
-    public static final String UPDATE_ = "UPDATE ";
-    public static final String VALUES = ") VALUES (";
-    public static final String INSERT_INTO_ = "INSERT INTO ";
-    public static final String MODELS = "models";
-    public static final String STRING1 = "STRING";
-    public static final String VARCHAR = " varchar(";
-    public static final String INTEGER = "INTEGER";
-    public static final String LONG = "LONG";
-    public static final String BIGINT = " BIGINT";
-    public static final String DOUBLE = "DOUBLE";
-    public static final String DOUBLE_PRECISION = " DOUBLE PRECISION";
-    public static final String BOOLEAN = "BOOLEAN";
-    public static final String BOOLEAN1 = " BOOLEAN";
-
     private Connection connection;
-
     public OrmManager(DataSource dataSource) {
         try {
             connection = dataSource.getConnection();
             if (connection == null) {
-                System.err.println(CONNECTION_ERROR);
+                System.err.println("Error: can't connection to DB");
                 System.exit(1);
             }
         } catch (SQLException e) {
-            System.err.println(CONNECTION_ERROR);
+            System.err.println("Error: can't connection to DB");
             System.exit(1);
         }
         init();
     }
 
     private void init() {
-
-        Reflections reflections = new Reflections(MODELS);
+        Reflections reflections = new Reflections("models");
         Set<Class<?>> set = reflections.getTypesAnnotatedWith(OrmEntity.class);
-
         List<String> classes = set.stream()
                 .map(Class::getCanonicalName)
                 .collect(Collectors.toList());
-
         for (String aClass : classes) {
-
             try {
                 Class<?> clazz = Class.forName(aClass);
-
                 OrmEntity ormEntity = clazz.getAnnotation(OrmEntity.class);
-
                 String dropper = "DROP TABLE IF EXISTS " + ormEntity.table() + " CASCADE";
                 System.out.println(dropper);
-
                 connection.createStatement().execute(dropper);
-
                 Field[] fields = clazz.getDeclaredFields();
-
-                StringBuilder sb = new StringBuilder(CREATE_TABLE_IF_NOT_EXISTS_);
+                StringBuilder sb = new StringBuilder("CREATE TABLE IF NOT EXISTS ");
                 sb.append(ormEntity.table()).append(" (");
-
                 for (int i = 0; i < fields.length; i++) {
                     Field field = fields[i];
-
                     if (field.isAnnotationPresent(OrmColumn.class)) {
                         OrmColumn ormColumn = field.getAnnotation(OrmColumn.class);
-
                         String type = field.getType().getSimpleName().toUpperCase();
-
                         sb.append(ormColumn.name());
                         switch (type) {
-                            case STRING1:
-                                sb.append(VARCHAR)
+                            case "STRING":
+                                sb.append(" varchar(")
                                         .append(ormColumn.length())
                                         .append(")");
                                 break;
-                            case INTEGER:
+                            case "INTEGER":
                                 sb.append(" ").append(type);
                                 break;
-                            case LONG:
-                                sb.append(BIGINT);
+                            case "LONG":
+                                sb.append(" BIGINT");
                                 break;
-                            case DOUBLE:
-                                sb.append(DOUBLE_PRECISION);
+                            case "DOUBLE":
+                                sb.append(" DOUBLE PRECISION");
                                 break;
-                            case BOOLEAN:
-                                sb.append(BOOLEAN1);
+                            case "BOOLEAN":
+                                sb.append(" BOOLEAN");
                                 break;
                         }
                     }
-
                     if (field.isAnnotationPresent(OrmColumnId.class)) {
-                        sb.append(field.getName()).append(SERIAL_PRIMARY_KEY);
+                        sb.append(field.getName()).append(" SERIAL PRIMARY KEY");
                     }
-
                     if (i != fields.length - 1) {
                         sb.append(", ");
                     }
                 }
-
                 sb.append(")");
-
                 System.out.println(sb);
-
                 connection.createStatement().execute(sb.toString());
             } catch (ClassNotFoundException | SQLException e) {
                 e.printStackTrace();
@@ -144,40 +89,28 @@ public class OrmManager {
 
     public void save(Object entity) {
         Class<?> clazz = entity.getClass();
-
         if (clazz.isAnnotationPresent(OrmEntity.class)) {
             OrmEntity ormEntity = clazz.getAnnotation(OrmEntity.class);
-
             Field[] fields = clazz.getDeclaredFields();
-
-            StringBuilder sb = new StringBuilder(INSERT_INTO_);
+            StringBuilder sb = new StringBuilder("INSERT INTO ");
             sb.append(ormEntity.table()).append(" (");
-
             for (int i = 1; i < fields.length; i++) {
                 Field field = fields[i];
-
                 if (field.isAnnotationPresent(OrmColumn.class)) {
                     OrmColumn ormColumn = field.getAnnotation(OrmColumn.class);
                     sb.append(ormColumn.name());
                 }
-
                 if (i != fields.length - 1) {
                     sb.append(", ");
                 }
             }
-
-            sb.append(VALUES);
-
+            sb.append(") VALUES (");
             for (int i = 1; i < fields.length; i++) {
                 Field field = fields[i];
-
                 extracted(entity, fields, sb, i, field);
             }
-
             sb.append(")");
-
             System.out.println(sb);
-
             try {
                 connection.createStatement().execute(sb.toString());
             } catch (SQLException e) {
@@ -188,25 +121,19 @@ public class OrmManager {
 
     public void update(Object entity) {
         Class<?> clazz = entity.getClass();
-
         if (clazz.isAnnotationPresent(OrmEntity.class)) {
             OrmEntity ormEntity = clazz.getAnnotation(OrmEntity.class);
-
             Field[] fields = clazz.getDeclaredFields();
-
-            StringBuilder sb = new StringBuilder(UPDATE_);
-            sb.append(ormEntity.table()).append(SET);
-
+            StringBuilder sb = new StringBuilder("UPDATE ");
+            sb.append(ormEntity.table()).append(" SET ");
             Object id = null;
 
             for (int i = 0; i < fields.length; i++) {
                 Field field = fields[i];
-
                 if (field.isAnnotationPresent(OrmColumn.class)) {
                     OrmColumn ormColumn = field.getAnnotation(OrmColumn.class);
                     sb.append(ormColumn.name());
                     sb.append("=");
-
                     extracted(entity, fields, sb, i, field);
                 }
 
@@ -219,13 +146,9 @@ public class OrmManager {
                     }
                     field.setAccessible(false);
                 }
-
             }
-
-            sb.append(WHERE_ID).append(id);
-
+            sb.append(" WHERE id=").append(id);
             System.out.println(sb);
-
             try {
                 connection.createStatement().executeUpdate(sb.toString());
             } catch (SQLException e) {
@@ -235,10 +158,9 @@ public class OrmManager {
     }
 
     private void extracted(Object entity, Field[] fields, StringBuilder sb, int i, Field field) {
-        if (field.getType().getSimpleName().equalsIgnoreCase(STRING)) {
+        if (field.getType().getSimpleName().equalsIgnoreCase("String")) {
             sb.append("'");
         }
-
         field.setAccessible(true);
         try {
             sb.append(field.get(entity));
@@ -246,11 +168,9 @@ public class OrmManager {
             e.printStackTrace();
         }
         field.setAccessible(false);
-
-        if (field.getType().getSimpleName().equalsIgnoreCase(STRING)) {
+        if (field.getType().getSimpleName().equalsIgnoreCase("String")) {
             sb.append("'");
         }
-
         if (i != fields.length - 1) {
             sb.append(", ");
         }
@@ -259,37 +179,28 @@ public class OrmManager {
     public <T> T findById(Long id, Class<T> aClass) {
         if (aClass.isAnnotationPresent(OrmEntity.class)) {
             OrmEntity ormEntity = aClass.getAnnotation(OrmEntity.class);
-
-            StringBuilder sb = new StringBuilder(SELECT_FROM);
+            StringBuilder sb = new StringBuilder("SELECT * FROM ");
             sb.append(ormEntity.table())
-                    .append(WHERE_ID)
+                    .append(" WHERE id=")
                             .append(id);
-
             System.out.println(sb);
 
             try {
                 ResultSet set = connection.createStatement().executeQuery(sb.toString());
-
                 if (set.next()) {
                     T t = aClass.newInstance();
-
                     Field[] fields = aClass.getDeclaredFields();
-
                     for (Field field : fields) {
                         field.setAccessible(true);
-
                         if (field.isAnnotationPresent(OrmColumnId.class)) {
-                            field.set(t, set.getLong(ID));
+                            field.set(t, set.getLong("id"));
                         }
-
                         if (field.isAnnotationPresent(OrmColumn.class)) {
                             OrmColumn ormColumn = field.getAnnotation(OrmColumn.class);
 
                             field.set(t, set.getObject(ormColumn.name()));
                         }
-
                         field.setAccessible(false);
-
                     }
                     return t;
                 }

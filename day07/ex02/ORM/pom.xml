@@ -19,7 +19,7 @@
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>42.3.4</version>
+            <version>42.3.6</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/com.zaxxer/HikariCP -->
@@ -32,7 +32,7 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
-            <version>1.7.21</version>
+            <version>1.7.36</version>
         </dependency>
 
         <dependency>
@@ -51,7 +51,7 @@
         <dependency>
             <groupId>org.reflections</groupId>
             <artifactId>reflections</artifactId>
-            <version>0.9.11</version>
+            <version>0.10.2</version>
         </dependency>
 
     </dependencies>
