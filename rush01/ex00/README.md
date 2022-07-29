@@ -1,7 +1,7 @@
 1. install clean: 
 mvn clean package
 
-2. run server: 
+2. run server:  
 java -jar target/"name".jar
 
 3. download lib javafx: 
