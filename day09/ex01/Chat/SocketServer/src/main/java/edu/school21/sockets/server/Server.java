@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Server.java                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/29 10:29:13 by kferterb          #+#    #+#             */
+/*   Updated: 2022/07/29 10:29:14 by kferterb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 package edu.school21.sockets.server;
 
 import java.io.*;
@@ -6,12 +18,6 @@ import java.net.Socket;
 import java.util.ArrayList;
 
 public class Server {
-
-    public static final String PORT = "--port=";
-    public static final String ERROR_BAD_ARGS = "Error: bad args";
-    public static final String ERROR_BAD_PARAMS = "Error: bad params";
-    public static final String ERROR_PUT_NUMBER = "Error: put number!";
-    public static final String SERVER_STARTED = "Server started";
 
     private final String[] args;
     private int port;
@@ -27,7 +33,7 @@ public class Server {
         }
 
         try (ServerSocket serverSocket = new ServerSocket(port)) {
-            System.out.println(SERVER_STARTED);
+            System.out.println("Server started");
 
             while (true) {
                 Socket socket = serverSocket.accept();
@@ -40,19 +46,19 @@ public class Server {
 
     private boolean checkArgs() {
         if (args.length != 1) {
-            System.err.println(ERROR_BAD_ARGS);
+            System.err.println("Error: bad args");
             return true;
         }
 
-        if (!args[0].startsWith(PORT)) {
-            System.err.println(ERROR_BAD_PARAMS);
+        if (!args[0].startsWith("--port=")) {
+            System.err.println("Error: bad params");
             return true;
         }
 
         try {
-            port = Integer.parseInt(args[0].replaceFirst(PORT, ""));
+            port = Integer.parseInt(args[0].replaceFirst("--port=", ""));
         } catch (NumberFormatException e) {
-            System.err.println(ERROR_PUT_NUMBER);
+            System.err.println("Error: put number!");
             return true;
         }
 

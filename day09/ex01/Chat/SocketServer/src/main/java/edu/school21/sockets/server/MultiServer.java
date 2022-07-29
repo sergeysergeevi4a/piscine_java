@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   MultiServer.java                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/29 10:29:10 by kferterb          #+#    #+#             */
+/*   Updated: 2022/07/29 10:29:11 by kferterb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 package edu.school21.sockets.server;
 
 import edu.school21.sockets.config.SocketsApplicationConfig;
@@ -14,16 +26,6 @@ import java.time.LocalDateTime;
 
 public class MultiServer extends Thread {
 
-    public static final String HELLO_FROM_SERVER = "Hello from Server!\n";
-    public static final String SIGN_UP = "signUp";
-    public static final String SIGN_IN = "signIn";
-    public static final String ERROR_COMMAND_NOT_FOUND = "Error: command not found\n";
-    public static final String ENTER_USERNAME = "Enter username:\n";
-    public static final String ENTER_PASSWORD = "Enter password:\n";
-    public static final String INCORRECT_PASSWORD = "Incorrect password!\n";
-    public static final String START_MESSAGING = "Start messaging\n";
-    public static final String EXIT = "exit";
-    public static final String YOU_HAVE_LEFT_THE_CHAT = "You have left the chat.\n";
     private final BufferedReader in;
     private final BufferedWriter out;
 
@@ -40,7 +42,7 @@ public class MultiServer extends Thread {
             UsersService usersService = context.getBean(UsersService.class);
             MessageService messageService = context.getBean(MessageService.class);
 
-            out.write(HELLO_FROM_SERVER);
+            out.write("Hello from Server!\n");
             out.flush();
 
             String answer;
@@ -48,48 +50,48 @@ public class MultiServer extends Thread {
             while (true) {
                 answer = in.readLine();
 
-                if (!answer.equals(SIGN_UP) && !answer.equals(SIGN_IN)) {
-                    out.write(ERROR_COMMAND_NOT_FOUND);
+                if (!answer.equals("signUp") && !answer.equals("signIn")) {
+                    out.write("Error: command not found\n");
                     out.flush();
                 } else {
                     break;
                 }
             }
 
-            out.write(ENTER_USERNAME);
+            out.write("Enter username:\n");
             out.flush();
 
             String userName = in.readLine();
 
-            out.write(ENTER_PASSWORD);
+            out.write("Enter password:\n");
             out.flush();
 
             String password = in.readLine();
 
-            if (answer.equals(SIGN_UP)) {
+            if (answer.equals("signUp")) {
                 out.write(usersService.saveNewUser(userName, password));
                 out.flush();
             } else {
                 if (!usersService.validateUser(userName, password)) {
-                    out.write(INCORRECT_PASSWORD);
+                    out.write("Incorrect password!\n");
                     out.flush();
                     return;
                 }
 
                 Server.servers.add(this);
 
-                out.write(START_MESSAGING);
+                out.write("Start messaging\n");
                 out.flush();
 
                 while (true) {
                     answer = in.readLine();
 
-                    if (!answer.equals(EXIT)) {
+                    if (!answer.equals("exit")) {
                         messageService.saveMessage(new Message(answer, Timestamp.valueOf(LocalDateTime.now())));
                     }
 
-                    if (answer.equals(EXIT)) {
-                        out.write(YOU_HAVE_LEFT_THE_CHAT);
+                    if (answer.equals("exit")) {
+                        out.write("You have left the chat.\n");
                         out.flush();
                         Server.servers.removeIf(server -> server == this);
                         break;

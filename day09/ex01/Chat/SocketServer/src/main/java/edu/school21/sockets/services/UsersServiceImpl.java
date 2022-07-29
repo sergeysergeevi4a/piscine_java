@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   UsersServiceImpl.java                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/29 10:30:03 by kferterb          #+#    #+#             */
+/*   Updated: 2022/07/29 10:30:04 by kferterb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 package edu.school21.sockets.services;
 
 import edu.school21.sockets.models.User;
@@ -11,8 +23,6 @@ import java.util.Optional;
 @Service
 public class UsersServiceImpl implements UsersService {
 
-    public static final String USER_WITH_THE_NAME_IS_ALREADY_EXIST = "User with the name is already exist!\n";
-    public static final String SUCCESSFUL = "Successful!\n";
     private PasswordEncoder passwordEncoder;
     private UsersRepository usersRepository;
 
@@ -31,12 +41,12 @@ public class UsersServiceImpl implements UsersService {
         Optional<User> user = usersRepository.findByName(userName);
 
         if (user.isPresent()) {
-            return USER_WITH_THE_NAME_IS_ALREADY_EXIST;
+            return "User with the name is already exist!\n";
         }
 
         usersRepository.save(new User(userName, passwordEncoder.encode(password)));
 
-        return SUCCESSFUL;
+        return "Successful!\n";
     }
 
     @Override

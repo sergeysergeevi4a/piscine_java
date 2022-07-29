@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Client.java                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kferterb <kferterb@student.21-school.ru    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/29 10:28:25 by kferterb          #+#    #+#             */
+/*   Updated: 2022/07/29 10:28:26 by kferterb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 package client;
 
 import java.io.*;
@@ -5,19 +17,6 @@ import java.net.Socket;
 import java.util.Scanner;
 
 public class Client {
-
-    public static final String PORT = "--server-port=";
-    public static final String LOCALHOST = "localhost";
-    public static final String ENTER_USERNAME = "Enter username:";
-    public static final String ERROR_BAD_ARGS = "Error: bad args";
-    public static final String ERROR_BAD_PARAMS = "Error: bad params";
-    public static final String ERROR_PUT_NUMBER = "Error: put number!";
-    public static final String INCORRECT_PASSWORD = "Incorrect password!";
-    public static final String SUCCESSFUL = "Successful!";
-    public static final String USER_WITH_THE_NAME_IS_ALREADY_EXIST = "User with the name is already exist!";
-    public static final String EXIT = "exit";
-    public static final String YOU_HAVE_LEFT_THE_CHAT = "You have left the chat.";
-    public static final String ERROR_SERVER_IS_DOWN = "Error: server is down!";
 
     private final String[] args;
     private int port;
@@ -31,7 +30,7 @@ public class Client {
             return;
         }
 
-        try (Socket socket = new Socket(LOCALHOST, port)) {
+        try (Socket socket = new Socket("localhost", port)) {
             try (BufferedReader console = new BufferedReader(new InputStreamReader(System.in));
                  BufferedWriter out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
                  BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()))) {
@@ -47,7 +46,7 @@ public class Client {
                     String answer = in.readLine();
                     System.out.println(answer);
 
-                    if (answer.equals(ENTER_USERNAME)) {
+                    if (answer.equals("Enter username:")) {
                         break;
                     }
 
@@ -69,9 +68,9 @@ public class Client {
                 String answer = in.readLine();
                 System.out.println(answer);
 
-                if (answer.equals(INCORRECT_PASSWORD) ||
-                        answer.equals(SUCCESSFUL) ||
-                        answer.equals(USER_WITH_THE_NAME_IS_ALREADY_EXIST)) {
+                if (answer.equals("Incorrect password!") ||
+                        answer.equals("Successful!") ||
+                        answer.equals("User with the name is already exist!")) {
                     out.write("\n");
                     out.flush();
                     return;
@@ -84,7 +83,7 @@ public class Client {
                             if (s == null) {
                                 break;
                             }
-                            if (s.equals(YOU_HAVE_LEFT_THE_CHAT)) {
+                            if (s.equals("You have left the chat.")) {
                                 break;
                             }
                             System.out.println(s);
@@ -99,31 +98,31 @@ public class Client {
                     String s = console.readLine();
                     out.write(s + "\n");
                     out.flush();
-                    if (s.equals(EXIT)) {
+                    if (s.equals("exit")) {
                         break;
                     }
                 }
             }
         } catch (IOException e) {
-            System.err.println(ERROR_SERVER_IS_DOWN);
+            System.err.println("Error: server is down!");
         }
     }
 
     private boolean checkArgs() {
         if (args.length != 1) {
-            System.err.println(ERROR_BAD_ARGS);
+            System.err.println("Error: bad args");
             return true;
         }
 
-        if (!args[0].startsWith(PORT)) {
-            System.err.println(ERROR_BAD_PARAMS);
+        if (!args[0].startsWith("--server-port=")) {
+            System.err.println("Error: bad params");
             return true;
         }
 
         try {
-            port = Integer.parseInt(args[0].replaceFirst(PORT, ""));
+            port = Integer.parseInt(args[0].replaceFirst("--server-port=", ""));
         } catch (NumberFormatException e) {
-            System.err.println(ERROR_PUT_NUMBER);
+            System.err.println("Error: put number!");
             return true;
         }
 
