@@ -1,10 +1,10 @@
-1. install clean: 
+1. install clean:   
 mvn clean package
 
 2. run server:  
 java -jar target/"name".jar
 
-3. download lib javafx: 
+3. download lib javafx:   
 https://gluonhq.com/products/javafx/
 
 4. run clients:   
