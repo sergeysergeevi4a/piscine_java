@@ -8,4 +8,4 @@ java -jar target/"name".jar
 https://gluonhq.com/products/javafx/
 
 4. run clients:   
-  java --module-path /PATH/javafx-sdk-18.0.2/lib --add-modules javafx.controls -jar ./target/"NAME.jar
+java --module-path /PATH/javafx-sdk-18.0.2/lib --add-modules javafx.controls -jar ./target/"NAME.jar
