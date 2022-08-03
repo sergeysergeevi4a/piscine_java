@@ -4,7 +4,7 @@ mvn clean package
 2. run server:  
 java -jar target/"name".jar
 
-3. download lib javafx:   
+3. download lib javafx for Mac(x64):   
 https://gluonhq.com/products/javafx/
 
 4. run clients:   
